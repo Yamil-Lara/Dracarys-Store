@@ -1,0 +1,766 @@
+.subBarraNanvegacion {
+    position: fixed;
+    top: 11%;
+    left: 0;
+    background: var(--primary-color);
+    z-index: 1;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 2px;
+    background-color: var(--secondary-color);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    color: var(--white);
+}
+
+
+.filtro-fechas-container {
+    padding-top:0;
+    display: flex;
+    align-items: center; /* Alinea verticalmente en el centro */
+    gap: 8px; /* Espacio entre label y select */
+    margin-left: 170px;
+    padding-right: 100px;
+    width: 60px;
+    flex: 1;
+}
+.filtro-fechas-containerr {
+    padding-top:0;
+    display: flex;
+    align-items: center; /* Alinea verticalmente en el centro */
+    gap: 8px; /* Espacio entre label y select */
+    margin-left: 20px;
+    padding-right: 20px;
+    width: 60px;
+    flex: 1;
+}
+
+.subBarraNanvegacion select {
+    display: inline-block;
+    padding: 5px 8px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    transition: border-color 0.3s;
+    background-color: var(--primary-color);
+    color: var(--white);
+    font-size: 12px;
+}
+
+.filtro-fechas-container option {
+    background-color: var(--primary-color);
+}
+.filtro-fechas-container option:hover {
+    background-color: var(--secondary-color);
+}
+
+.filtro-fechas-container select:hover {
+    box-shadow: 1px 0.5px 5px 1px var(--tertiary-color);
+}
+
+.filtro-fechas-container select:focus,
+.filtro-fechas-container select:active {
+    background-color: var(--tertiary-color); /* Color naranja al hacer clic */
+}
+
+#eliminarSeleccionados {
+    margin-top: 20px;
+    margin: 3px;
+    padding: 3px 5px;
+    width: 110px;
+    border: none;
+    border-radius: 25px;
+    background-color: var(--eliminarColor);
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#eliminarSeleccionados:hover {
+    background-color: var(--eliminarHover);
+    box-shadow: 0 6px 12px rgba(73, 80, 87, 0.4);
+    padding: 4px 6px;
+}
+#eliminarSeleccionados:active {
+    background-color: var(--eliminarActive);
+    box-shadow: 0 2px 4px rgba(52, 58, 64, 0.2);
+    transform: scale(0.95);
+  }
+
+.eliminar-container {
+    display: flex;
+    padding-right: 130px;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    margin-left: auto;
+}
+
+.eliminar-container .checkbox-burbuja input {
+    display: none;
+    
+}
+.checkbox-burbuja{
+    order:-1;
+}
+.filtro-fechas{
+    order:1;
+}
+
+.eliminar-container .checkbox-burbuja span {
+    
+    width: 15px;
+    height: 15px;
+    background: #eee;
+    display: inline-block;
+    border-radius: 0;
+    transition: all 0.3s ease;
+    position: relative;
+    cursor: pointer;
+    box-shadow: 2px 2px 5px 2px var(--secondary-color);
+}
+
+.eliminar-container .checkbox-burbuja input:checked + span {
+    background-color: var(--eliminarColor);
+}
+
+.eliminar-container .checkbox-burbuja span:after {
+    content: "";
+    position: absolute;
+    display: none;
+    top: 50%;
+    left: 50%;
+    width: 2px;
+    height: 2px;
+    background: var(--white);
+    border-radius: 0;
+    transform: translate(-50%, -50%) scale(0);
+    transition: transform 0.3s ease;
+}
+
+.eliminar-container .checkbox-burbuja input:checked + span:after {
+    display: block;
+    transform: translate(-50%, -50%) scale(1);
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .subBarraNanvegacion {
+        padding: 5px 10px;
+        font-size: 11px;
+        
+    }
+
+    .filtro-fechas-container {
+        margin-left: 10px;
+    }
+
+    #eliminarSeleccionados {
+        padding: 5px 10px;
+    }
+}
+
+@media (max-width: 768px) {
+    .subBarraNanvegacion {
+        gap: 10px;
+        padding: 5px;
+        margin-top: 75px;
+    }
+
+    .filtro-fechas-container {
+        margin-left: 0;
+    }
+
+    #eliminarSeleccionados {
+        padding: 5px 8px;
+        font-size: 11px;
+    }
+    .eliminar-container {
+        display: flex;
+        padding-right: 10px;
+        align-items: center;
+        gap: 10px;
+        margin-left: auto;
+    }
+    #eliminarSeleccionados {
+        padding: 4px 3px;
+    }
+}
+
+@media (max-width: 480px) {
+    .subBarraNanvegacion {
+        font-size: 10px;
+        gap: 8px;
+        padding: 5px;
+    }
+
+    .filtro-fechas-container {
+        margin-left: 0;
+        max-width: 60%;
+    }
+
+    #eliminarSeleccionados {
+        padding: 4px 6px;
+        font-size: 10px;
+    }
+}
+
+
+/* ---------------------------------------------------*/
+/* Contenedor principal de productos */
+.ContenedorProductos{
+    position: relative;
+    top: 10%;
+    left: 13%;
+    width: 85%;
+    margin-bottom: 10%;
+    margin-top: 110px;
+}
+.product-gridd {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+    gap: 20px;
+    padding: 10px;
+    background-color: #f3f4f6;
+    border-radius: 8px;
+}
+
+.MensajeNoEncontrado {
+    padding-top: 20%;
+    font-size: 18px;
+    text-align: center;
+    color: var(--eliminarColor);
+    display: none;
+}
+/*Estilos de los mensajes que se mostraran cuando no haya productos para  mostrar*/
+.boton-publicar {
+    display: inline-block; /* Permite aplicar padding y border */
+    padding: 5px 10px;
+    background-color: var(--primary-color); 
+    box-shadow:2px 2px 5px 1px  var(--secondary-color);
+    color: white; 
+    border: none; 
+    border-radius: 5px;
+    text-decoration: none; 
+    cursor: pointer; 
+    transition: background-color 0.3s; /* Transición suave al cambiar color */
+}
+
+.boton-publicar:hover {
+    background-color: var(--secondary-color); /* Color al pasar el mouse */
+}
+.boton-publicar:active {
+    background-color: var(--tertiary-color); /* Color al pasar el mouse */
+}
+
+/* Tarjeta de producto individual */
+.tarjeta-productoo {
+    position: relative;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 5px;
+    overflow: hidden;
+    background-color:transparent;
+    box-shadow: 2px 2px 5px 1px var(--secondary-color);
+    transition: transform 0.2s ease-in-out;
+    height: 465px;
+    transform: scale(1.0);
+}
+
+.tarjeta-productoo:hover {
+    transform: scale(1.01);
+}
+
+/* Contenedor del checkbox (para selección de productos) */
+.seleccion-productoo {
+    position: absolute;
+    top: 1px;
+    left: 10px;
+    z-index: 1;
+}
+
+/* Estilo Redondo y Animado */
+.checkbox-burbuja input {
+    display: none; /* Ocultar el checkbox nativo */
+}
+
+.checkbox-burbuja span {
+    margin-top: 0;
+    width: 25px;
+    height: 25px;
+    background: #eee; /* Color inicial */
+    display: inline-block;
+    border-radius: 50%; /* Forma circular */
+    transition: all 0.3s ease;
+    position: relative;
+    cursor: pointer;
+    box-shadow: 2px 2px 5px 2px var(--secondary-color); /* Sombra */
+}
+
+.checkbox-burbuja input:checked + span {
+    background-color: var(--eliminarColor); /* Color al estar seleccionado */
+}
+
+.checkbox-burbuja span:after {
+    content: "";
+    position: absolute;
+    display: none;
+    top: 50%;
+    left: 50%;
+    width: 12px;
+    height: 5px;
+    background: var(--white);
+    border-radius: 50%;
+    transform: translate(-50%, -50%) scale(0); /* Ocultar círculo interno */
+    transition: transform 0.3s ease; /* Animación suave */
+}
+
+.checkbox-burbuja input:checked + span:after {
+    display: block;
+    transform: translate(-50%, -50%) scale(1); /* Mostrar círculo interno al estar marcado */
+}
+
+
+/* Imagen del producto */
+.imagen-productoo {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-bottom: 1px solid #eee;
+    border-radius: 10px;
+}
+
+/* Nombre del producto */
+.nombre-productoo h3{
+    font-size: 1.2rem;
+    margin: 3px 0;
+    text-align: center;
+    color:var(--secondary-color);
+    text-decoration: none;
+}
+/*.nombre-productoo h3 {
+    font-size: 1.2rem; /* Ajusta el tamaño de la fuente según tus necesidades */
+   /* margin: 0; /* Elimina los márgenes predeterminados */
+   /* text-align: center; /* Mantiene la alineación centrada, puedes cambiarla si lo deseas */
+  /*  color: var(--secondary-color); /* Mantiene el color definido */
+/*    text-decoration: none; /* Quita cualquier subrayado 
+
+}*/
+.tarjeta-productoo h3 {
+    text-align: center;
+    color: #02735e;
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+    overflow: hidden; /* Oculta el contenido que excede */
+    text-overflow: ellipsis; /* Muestra "..." si hay un desbordamiento */
+}
+
+/* Subcategoría del producto */
+.subcategoria-productoo {
+    font-size: 1rem;
+    color: #777;
+    text-align: center;
+    margin-bottom: 5px;
+}
+.ContenedorDescripcion{
+    margin: 0px;
+    width: 99%;
+    height: 85px;
+    box-shadow: 0.5px 0.5px 20px 1px rgb(230, 221, 221);
+    border-radius: 5px;
+}
+/* Descripción del producto */
+.descripcion-productoo {
+    display: inline-block;
+    padding: 5px;
+    font-size: 0.9rem;
+    color: #555;
+    text-align: justify;
+    line-height: 1.4;
+}
+
+/* Precio del producto */
+.precio-productoo {
+    font-size: 1.1rem;
+    color: var(--primary-color);
+    font-weight: bold;
+    display: block;
+    margin: 3px 0;
+    padding:0;
+    text-align: center;
+}
+
+/* Estado del producto (indicador de activo o inactivo) */
+.boton-estado {
+    margin: 2px;
+    margin-left: 25%;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    color: var(--white);
+    font-weight: bold;
+    text-align: center;
+    cursor: default;
+    outline: none;
+    display: inline-block;
+    transition: color 0.3s ease, text-shadow 0.3s ease; /* Transición suave para el color y sombra */
+    box-shadow: none; /* Eliminación de la sombra del botón */
+    width: 50%;
+    background: none; /* Sin fondo */
+}
+
+/* Estilo para el estado activo (verde) */
+.boton-estado.activo {
+    color: var(--primary-color); /* Verde */
+    text-shadow: 0 0 5px rgba(0, 255, 0, 0.7); /* Sombra verde para el texto */
+}
+
+/* Estilo para el estado inactivo (rojo) */
+.boton-estado.inactivo {
+    color: var(--eliminarColor); /* Rojo */
+    text-shadow: 0 0 5px rgba(255, 0, 0, 0.7); /* Sombra roja para el texto */
+}
+
+
+
+/* Fecha de publicación */
+.fecha-publicacion {
+    display: flex;
+    justify-content: center; /* Centra el contenido horizontalmente */
+    align-items: center; /* Centra el contenido verticalmente */
+    width: 100%;
+    height:30px;
+    font-size: 0.85rem;
+    color: #7f8c8d;
+    margin: 1px;
+}
+.fecha-publicacionn {
+    text-align: center;
+    padding:1px;
+}
+/* Mensaje cuando no hay productos */
+.sin-productos {
+    text-align: center;
+    padding: 20px;
+    font-size: 1rem;
+    color: #555;
+}
+
+
+/* Mejora en la animación de hover de tarjetas */
+.tarjeta-productoo:hover .imagen-productoo {
+    filter: brightness(0.9);
+}
+
+.boton-editar {
+    position: absolute;
+    bottom:0px;
+    display: inline-block; /* Para que se comporte como un botón */
+    padding: 5px;
+    margin-bottom: 0px;
+    width: 100%;
+    background-color: var(--tertiary-color); /* Color verde */
+    color: var(--white); /* Color de texto blanco */
+    text-align: center;
+    border-radius: 5px; /* Bordes redondeados */
+    text-decoration: none; /* Quitar el subrayado del enlace */
+    font-size: 16px; /* Tamaño de fuente */
+    transition: background-color 0.3s ease, transform 0.3s ease; /* Efecto suave */
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2); /* Sombra */
+}
+
+.boton-editar:hover {
+    background-color: var(--secondary-color); /* Color al hacer hover (un poco más oscuro) */
+}
+
+.boton-editar:active {
+    background-color: var(--primary-color); /* Color al hacer clic */
+}
+
+
+/* Responsividad */
+@media (max-width: 600px) {
+    .ContenedorProductos{
+        margin-top: 5rem;
+    }
+    .productos-contenedor {
+        grid-template-columns: 1fr;
+    }
+    
+    .tarjeta-productoo {
+        margin-bottom: 20px;
+    }
+}
+
+
+.Boton_Editar_Productos{
+    position: absolute;
+    top: 10px;
+    right:20px;
+    margin-right: 20px;
+    background-color: transparent;
+    width: 10%;
+    font-size: 10px;
+    
+}
+
+.BotonEditar {
+    display: flex; /* Mantén solo display: flex */
+    display: inline-block;
+    padding: 10px;
+    margin-top: 1px;
+    margin-right: 15px;
+    height: 40px;
+    width: 90px;
+    background-color: var(--tertiary-color);
+    box-shadow: 2px 2px 5px 1px var(--secondary-color);
+    border: none;
+    color: var(--white);
+    justify-content: center; /* Alinea horizontalmente el contenido al centro */
+    align-items: center; /* Alinea verticalmente el contenido al centro */
+    cursor: pointer;
+    border-radius: 20px;
+    transition: all 0.5s;
+    gap: 8px; /* Añade espacio entre el texto y el ícono */
+}
+.BotonEditar:hover{
+    background-color: var(--secondary-color);
+    color: #fff;
+    transform: scale(0.95);
+}
+.BotonEditar:active{
+background-color: var(--primary-color);
+}
+
+.Boton_Eliminar_Productos{
+    position: absolute;
+    bottom:5px;
+    right: 5px;
+    background-color: transparent;
+    width: 15%;
+    font-size: 10px;
+    
+}
+.BotonEliminarr{
+        display: flex; /* Asegúrate de que este botón también tenga display: flex */
+        display: inline-block;
+        padding: 10px;
+        height: 40px;
+        width: 90px;
+        margin-bottom: 5px;
+        margin-right: 0px;
+        background-color: rgb(223, 83, 83);
+        box-shadow: 2px 2px 5px 1px var(--secondary-color);
+        border: none;
+        color: var(--white);
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        border-radius: 20px;
+        transition: all 0.5s;
+        gap: 8px; /* Añade espacio entre el texto y el ícono */
+} 
+.BotonEliminarr:hover{
+    background-color: rgb(194, 27, 27);
+    color: #fff;
+    transform: scale(0.95);
+}
+.BotonEliminarr:active{
+    background-color: var(--tertiary-color);
+}
+.container3 {
+    position: relative;
+    max-width: 800px; /* Establecer un ancho máximo */
+    width: 95%;
+    margin: auto;
+    background-color: var(--white);
+    padding: 25px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    color: var(--secondary-color);
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.form-group.inline {
+    display: flex; /* Usar flexbox para alinear elementos en línea */
+    gap: 20px; /* Espacio entre los elementos */
+}
+
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+input[type="text"],
+input[type="number"],
+select,
+textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+textarea {
+    height: 100px;
+    resize: vertical;
+}
+
+
+input[type="file"] {
+    display: none;
+}
+
+/* Estilo para el botón personalizado */
+.custom-file-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: var(--primary-color);
+    color: var(--white);
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    font-family: 'Arial', sans-serif;
+    border: none;
+    transition: background-color 0.3s ease;
+}
+
+.custom-file-button:hover {
+    background-color: var(--secondary-color);
+}
+.custom-file-button:active{
+    background-color: var(--tertiary-color);
+}
+
+/* Estilo para mostrar el nombre del archivo seleccionado */
+#file-name {
+    margin-left: 10px;
+    font-style: italic;
+    font-size: 14px;
+    color: #555;
+}
+
+.preview-container {
+    display: flex;
+    flex-wrap: nowrap; /* Cambiar a nowrap para evitar que se deformen */
+    margin-top: 10px;
+    max-width: 100%; /* Limitar el ancho del contenedor de vista previa */
+    overflow-x: auto; /* Permitir desplazamiento horizontal si hay muchos archivos */
+}
+.preview-container img {
+    max-width: 100px; /* Limitar el ancho máximo de las imágenes */
+    height: auto; /* Mantener la proporción de la imagen */
+    object-fit: cover; /* Mantener la proporción de la imagen */
+    margin-right: 10px;
+    border: 1px solid #ddd;
+    padding: 5px;
+}
+
+
+
+.file-input {
+    margin-top: 5px;
+}
+
+
+.checkbox-container {
+    display: flex; /* Usa flexbox para alinear elementos en línea */
+    align-items: flex-end; /* Alinea verticalmente los elementos al centro */
+}
+
+.checkbox-container input[type="checkbox"] {
+    margin-right: 15px;
+    width: 23px; /* Ajusta el ancho */
+    height: 20px; /* Ajusta la altura */
+    cursor: pointer; /* Cambia el cursor al pasar sobre el checkbox */
+}
+
+.button-group {
+    display: flex;
+    display: inline-block;
+    justify-content: space-between;
+    height:10px;
+}
+
+.btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.btn-primary {
+    background-color: var(--primary-color); /* Color cuando está deshabilitado */
+}
+
+.btn-primary:disabled {
+    background-color: #666666; /* Mantenemos el mismo color */
+    opacity: 0.5; /* Opacidad al 50% para indicar que está deshabilitado */
+    pointer-events: none; /* Desactivar cualquier interacción con el botón */
+}
+
+.btn-secondary {
+    background-color: var(--eliminarColor);
+}
+
+.btn:hover {
+    opacity: 0.9;
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+    top: 50%; /* Coloca los botones en el centro vertical */
+    transform: translateY(-50%); /* Centra el botón exactamente en el medio */
+    width: 40px; /* Ajusta el tamaño según tus preferencias */
+    height: 40px;
+    background-color: rgba(0, 0, 0, 0.3); /* Color de fondo */
+    border-radius: 50%;
+}
+
+/* Opcional: Personalizar el color del icono */
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    background-color: var(--primary-color); /* Cambia este color al que desees */
+    border-radius: 50%;
+}
+
+/* Opcional: Cambiar el color al pasar el cursor */
+.carousel-control-prev:hover,
+.carousel-control-next:hover {
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+@media (max-width: 600px) {
+
+   
+    
+    .form-group.inline {
+        display: block; /* Usar flexbox para alinear elementos en línea */
+        gap: 20px; /* Espacio entre los elementos */
+    }
+    .button-group {
+        flex-direction: column;
+    }
+
+    .btn {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+}

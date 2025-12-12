@@ -1,0 +1,181 @@
+
+.navbar {
+    position: fixed;
+    top: 0%;
+    width: 100%;
+    background-color: var(--primary-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /*padding: 1rem;*/
+    padding: 0.5%;
+    color: var(--white);
+    z-index: 1000;
+}
+
+.logo-img {
+    width: 60px;
+    height: 60px;
+    filter: drop-shadow(2px 2px 2px white);
+}
+.logo-img:hover{
+    filter: drop-shadow var(--secondary-color);
+}
+
+.search-bar {
+    display: flex;
+    align-items: center;
+    flex-grow: 1;
+    margin: 0 2rem;
+}
+
+.search-bar input {
+    padding: 0.1rem;
+    margin: 0.5rem;
+    border: none;
+    border-radius:44px;
+    width: 90%;
+    height: 40px;
+    max-width: 400px;
+}
+.search-bar button {
+    display: flex;
+    padding: 1rem;
+    margin-top: 1px;
+    height: 40px;
+    background-color: var(--primary-color);
+    box-shadow:2px 2px 5px 1px  var(--secondary-color);
+    border: none;
+    color: var(--white);
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    border-radius:20px;
+    transition: all 0.5s;
+}
+/*button:hover{
+    background-color: var(--secondary-color) ;
+}*/
+#buttonbuscar:hover{
+   background-color: var(--secondary-color);
+}
+#buttonbuscar:active {
+    background-color: var(--tertiary-color);
+    color: var(--white);
+    transform: scale(0.95);
+}
+.nav-links {
+    display: flex;
+    gap: 10px;  /* Ajusta el espacio entre los botones */
+    align-items: center;  /* Alinea verticalmente los elementos */
+}
+.nav-link {
+        display: flex;
+        padding: 0.5rem 0.5rem; 
+        margin: 0.5rem;
+        height: auto; /*podemos ponerlo en auto*/
+        background-color: var(--primary-color);
+        box-shadow: 2px 2px 5px 1px var(--secondary-color);
+        border: none;
+        color: var(--white);
+        justify-content: center;
+        align-items: center;
+        text-decoration: none;
+        cursor: pointer;
+        border-radius: 5px;
+        transition: all 0.5s;   
+}
+.nav-link:hover {
+    background-color: var(--secondary-color);
+}
+.nav-link:active {
+    background-color: var(--tertiary-color);
+    color: var(--white);
+    transform: scale(0.95); /* Efecto de pulso al hacer clic */
+}
+ion-icon{
+    padding-top: 5px;
+}
+
+.profile-img {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;  /* Hace la imagen redonda */
+    object-fit: cover;   /* Asegura que la imagen se ajuste correctamente */
+    margin-right: 8px;   /* Espacio entre la imagen y el nombre/enlace */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Sombra alrededor */
+}
+
+.cart-count {
+    background-color: var(--tertiary-color);
+    border-radius: 50%;
+    padding: 2px 6px;
+    font-size: 0.8em;
+}
+
+.hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.hamburger span {
+    width: 25px;
+    height: 3px;
+    background-color: var(--white);
+    margin: 2px 0;
+    transition: 0.4s;
+}
+
+
+@media (max-width: 768px) {/*768 antes*/
+    .navbar {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        padding: 0.5px;
+        height: 77px;
+    }
+    .search-bar {
+        order: 1;
+        width: 50%;
+        margin: 1rem 0;
+        padding: 0.5px;
+    }
+    .search-bar button{
+       font-size: 9px;
+       border-radius: 15px;
+       width: 36px;
+       height: 33px;
+
+    }
+    .nav-links {
+        display: none;
+        width: 100%;
+        flex-direction: column;
+        align-items: center;
+        order: 2;
+        position: absolute; 
+        top: 100%; 
+        right: 0; 
+        background-color:var(--primary-color); 
+        z-index: 1000; 
+    }
+
+    .nav-links.active {
+        display: flex;
+        width: 30%;
+    }
+    .nav-link{
+        width: 100%;
+        border: 0.5px;
+        margin: 1px;
+    }
+    .hamburger {
+        display: flex;
+        order: 1;
+        padding: 5px;
+    }
+
+}

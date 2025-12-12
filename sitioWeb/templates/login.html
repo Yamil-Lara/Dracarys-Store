@@ -1,0 +1,42 @@
+<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+{% load static %}
+<!-- Modal de Login -->
+<div id="loginModal" class="modal" style="display: none;">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2>Iniciar Sesión</h2>
+            
+            <span class="close" id="closeModal">×</span>
+        </div>
+        <div class="modal-body">
+            <form id="loginForm" method="POST" action="{% url 'login' %}" onsubmit="cerrarLogin()">
+                {% csrf_token %}
+                  <div class="input-box">
+                    <ion-icon name="person-outline"></ion-icon>
+                    <input class="input" type="text" name="username" required>
+                    <label>Nombre de usuario</label>
+                  </div>
+
+                  <div class="input-box">
+                    <ion-icon name="key-outline"></ion-icon>
+                    <input class="input" type="password" name="password" required>
+                    <label> Contraseña</label>
+                  </div>
+                  
+
+                <button type="submit">Ingresar</button>
+            </form>
+                <div class="Btn_Registro_Y_Admin" >
+                  <div class="RegistroUsuario" onclick="window.location.href='{% url 'registro' %}'" id="createAccount">
+                   Registrarse
+                  </div>
+                  <div class="EntrarAdmin" onclick="window.location.href='/admin/login/?next=/admin/'" id="createAccount">
+                    Admin
+                  </div>
+                </div>
+            </div>
+          </div>
+        </div>
+    </div>
+</div>

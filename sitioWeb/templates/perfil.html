@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+Perfil
+{% endblock %}
+
+{% block contenidos %}
+    {% include 'cuenta.html' %}
+    {% include 'barraPerfil.html' %}    
+    <div id="Colorcito"
+     data-uno="{{ masTemas.primario }}"
+     data-dos="{{ masTemas.secundario }}"
+     data-tres="{{ masTemas.terciario }}"
+     data-cuatro="{{ masTemas.texto }}"
+     data-cinco="{{ masTemas.fondo }}">
+</div>
+{% endblock %}
+
+<!--{% block materiales %}
+    {% include 'materiales.html' %}
+{% endblock %}-->
+{% block extra_js %}
+    <script src="{% static 'perfil.js' %}"></script>
+    <script>
+        function mostrarMisMateriales() {
+            document.getElementById('contenido-dinamico').innerHTML = `
+                {% include 'publicaciones.html' %}
+            `;
+        }
+    
+    </script>
+{% endblock %}
+
+

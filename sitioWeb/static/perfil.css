@@ -1,0 +1,650 @@
+.menu-perfil {
+    width: 12%;
+    background-color: var(--primary-color); /* Verde oscuro */
+    padding-top: 10px;
+    height: calc(100vh - 60px); /* Ajusta la altura para descontar el header */
+    
+    position: fixed; /* Fija el aside al lado izquierdo */
+    top: 74px; /* Desplaza el aside hacia abajo, dejando espacio para el header */
+    left: 0;
+    z-index: 1; /* Asegura que no quede por encima del header */
+    color: #fff;
+}
+
+.menu-perfil img {
+    width: 4.25rem;
+    height: 4.25rem;
+    border-radius: 50%;
+    display: block;
+    margin: 0 auto 20px auto;
+    object-fit: cover;
+    box-shadow:2px 2px 5px 2px  var(--secondary-color);
+    margin-top: 2rem; /* Ajusta el valor para mover la foto hacia abajo */
+}
+
+.lista-perfil {
+    list-style-type: none;
+    padding: 0px;    
+}
+
+.lista-perfil li {
+    margin-bottom: 10px;
+    width: 100%;
+    box-sizing: border-box;
+    
+   
+      
+}
+.lista-perfil li a {
+    color: #fff; /* Cambia el color del texto de los enlaces a blanco */
+    text-decoration: none; /* Opcional: elimina el subrayado de los enlaces */
+    display: block;
+    padding-left: 10px;
+    width: 100%;
+    box-sizing: border-box;
+    
+}
+
+.lista-perfil :active {
+    background-color:none;
+}
+.lista-perfil li:hover{
+    background-color:none;
+    
+}
+
+.lista-perfil li a  :active {
+    background-color: var(--tertiary-color); /* Naranja */
+}
+.lista-perfil li a:hover{
+    background-color: var(--secondary-color);
+    
+}
+#cerrarSesionPerfil:hover{
+    background-color: #dc3545;
+}
+
+.profile-config {
+    display:flex;
+    flex-direction:row;
+    justify-content: space-between;
+    gap: 5rem;
+
+    background-color: var(--white);
+    
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-left: 5rem;
+    margin-top: 3rem;
+    
+    position: relative; /* O quitar si no es necesario */
+    z-index: 1; /* Asegúrate que esté por debajo del menú y barra */
+    box-sizing: border-box;
+    
+    
+}
+
+
+
+.profile-photo {
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    
+    text-align: center;
+    margin-bottom: 20px;
+    width: 100%; /* Asegura que el contenedor ocupe todo el ancho disponible */
+    max-width: 25rem; /* Define el tamaño máximo del contenedor */ 
+    
+    
+}
+
+.profile-config form {
+    display: flex;
+    flex-direction: row;
+    justify-content:space-between;
+    width: 100%; /* Asegúrate de que ocupe todo el ancho disponible */
+    padding: 0 0 0 6rem ; /* Añade padding si quieres dar espacio interno */
+    margin: 0; /* Ajusta márgenes si es necesario */
+    
+    
+    
+    
+}
+
+.datos-principal {
+    display: block;
+    
+    box-sizing: border-box;
+    margin-top: 2rem;
+    text-align: left;
+    border-right: 5rem;
+    
+     
+}
+
+.datos-principal label{
+    display: block;
+    padding: 0.5rem 0;
+   
+}
+.datos-principal input{
+    display: block;
+    box-sizing: border-box;
+}
+
+.profile-photo img {
+    width: 20.25rem;
+    height: 20.25rem;
+    border-radius: 50%;
+    display: block;
+    object-fit: cover;
+    padding: 1rem;
+    box-shadow:2px 2px 5px 2px  var(--secondary-color);
+    
+}
+
+#botones-contenedor{
+    display: flex; /* Alinea los botones en una fila */
+    justify-content: flex-end; /* Alinea los botones a la derecha */
+    gap: 3rem; /* Espacio entre los botones */
+    
+
+}
+
+#editar-imagen {
+    display: block;
+    background-color:var(--tertiary-color);
+    color: var(--white);
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+#editar-imagen:hover {
+    background-color: var(--secondary-color);
+}
+#editar-imagen:active {
+    background-color: var(--primary-color);
+}
+
+
+
+.editaFoto {
+    display: inline-block;
+    background-color: var(--primary-color);
+    color: var(--white);
+    padding: 0.5rem 1rem;
+    border: none; /* Elimina el borde del botón */
+    border-radius: 4px;
+    cursor: pointer; /* Muestra el cursor de mano para botones */
+    transition: background-color 0.3s ease, color 0.3s ease, font-size 0.3s ease;
+    font-size: 16px;
+    text-align: center; /* Asegura que el texto esté centrado */
+    box-shadow: 2px 2px 5px 1px var(--secondary-color);
+}
+
+
+.editaFoto :hover {
+    background-color: var(--secondary-color);
+    color: #fff;
+}
+.editaFoto :active{
+    background-color: var(--tertiary-color);
+}
+
+
+
+
+.save-imagen{
+    display: none;
+    background-color: var(--primary-color);
+    color: var(--white);
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 10px;
+    text-align: center;
+}
+
+
+
+ #editar-datos{
+    background-color: var(--tertiary-color);
+    color: var(--white);
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 10px;
+ }
+
+
+label {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+}
+
+.profile-config form input{
+    background: var(--primary-color);
+    padding: 5px;
+    margin-bottom: 10px;
+    border: none;
+    color: var(--white);
+    height: auto;
+}
+.button-group{
+    display: flex;
+    flex-direction: column;
+    align-items: center;        /* Opcional: centra horizontalmente */
+    justify-content: center;     /* Centra verticalmente */
+    padding: 5rem;
+    
+}
+.button-group button{
+    background-color:var(--tertiary-color);
+    color: var(--white);
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+#email{
+    padding: 10px;
+    border: 1px solid #ccc;
+    font-size: 12px; /* Inicialmente, el tamaño más grande */
+    transition: font-size 0.3s ease; /* Animación suave cuando cambia el tamaño de la fuente */
+
+}
+/*---------modal nombre*/
+.modal {
+    display: none; /* Oculto por defecto */
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Fondo oscuro */
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background-color: var(--primary-color);
+    padding: 2rem;
+    border-radius: 8px;
+    width: 300px;
+    text-align: center;
+}
+#input-editar-nombre{
+    background-color:var(--secondary-color);
+    font-size: 15px;
+}
+#input-editar-correo{
+    background-color:var(--secondary-color);
+    padding: 10px;
+    border: 1px solid #ccc;
+    font-size: 15px; /* Inicialmente, el tamaño más grande */
+    transition: font-size 0.3s ease; /* Animación suave cuando cambia el tamaño de la fuente */
+}
+#input-editar-celular{
+    background-color:var(--secondary-color);
+    font-size: 15px;
+}
+
+.modal-content h3,h2{
+    color: var(--white);
+}
+
+.modal-buttons {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 1rem;
+}
+
+.modal-buttons button {
+    padding: 0.5rem 1rem;
+    border: none;
+    cursor: pointer;
+    background-color: var(--tertiary-color);
+    color: var(--white);
+}
+.modal-buttons button:hover{
+    background-color: var(--secondary-color);
+
+}
+
+.modal-buttons button#cancelar-nombre {
+    background-color: var(--eliminarColor); /* Botón de cancelar en rojo */
+} 
+.modal-buttons button#cancelar-correo {
+    background-color: var(--eliminarColor); /* Botón de cancelar en rojo */
+}  
+
+.modal-buttons button#cancelar-celular {
+    background-color: var(--eliminarColor); /* Botón de cancelar en rojo */
+}               
+
+/*----------------fin modal nombre*/
+
+
+
+.cancelar {
+   
+    text-decoration: none;
+    display: none;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    background-color: #f0f0f0;
+    color: black;
+}
+.save {
+    display:flex;
+   
+    background-color: var(--tertiary-color);
+    box-shadow:2px 2px 5px 1px  var(--secondary-color);
+    color: var(--white);
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+.save:hover{
+    background-color: var(--secondary-color);
+}
+#modal-final button{
+    margin-left: 3rem;
+    margin-right: 3rem;
+    justify-content:center;
+}
+
+
+.logoutS {
+    text-decoration: none; /* Quita el subrayado del enlace */
+    background-color: var(--primary-color); /* Color de fondo del botón */
+    color: var(--white); /* Color del texto */  
+}
+.logoutS:hover{
+    background-color: var(--eliminarColor);
+    
+}
+.logout, .ofertarM {
+    display: none;
+}
+
+
+
+.materials {
+    background-color: var(--white);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.materials-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+.material-card {
+    background-color: var(--white);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.material-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.material-card h3 {
+    margin: 10px 0;
+}
+
+.more-info {
+    background-color: #006400;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-bottom: 10px;
+}
+
+/* Estilo común para los botones de editar */
+.button-editar {
+    background-color: #007bff; /* Color de fondo */
+    color: #fff; /* Color del texto */
+    border: none; /* Sin borde */
+    border-radius: 5px; /* Bordes redondeados */
+    padding: 8px 12px; /* Espaciado interno */
+    cursor: pointer; /* Cambia el cursor al pasar el mouse */
+    font-size: 0.9rem; /* Tamaño de fuente */
+    transition: background-color 0.3s, transform 0.2s; /* Efectos de transición */
+}
+
+/* Efecto hover para los botones de editar */
+.button-editar:hover {
+    background-color: #0056b3; /* Color de fondo al pasar el mouse */
+    transform: scale(1.05); /* Escala ligeramente el botón */
+}
+
+
+
+.agregar-editaPerfil {
+    display: inline-block;
+    background-color: var(--tertiary-color);
+    color: var(--white);
+    padding: 8px 8px 8px 8px;
+    border: none; /* Elimina el borde del botón */
+    border-radius: 4px;
+    cursor: pointer; /* Muestra el cursor de mano para botones */
+    transition: background-color 0.3s ease, color 0.3s ease, font-size 0.3s ease;
+    font-size: 16px;
+    text-align: center; /* Asegura que el texto esté centrado */
+    box-shadow: 2px 2px 5px 1px var(--secondary-color);
+    margin : 5px;
+    height:auto;
+    position: relative;
+    top:0%
+}
+
+
+.agregar-editaPerfil:hover {
+    background-color: var(--secondary-color);
+    color: #fff;
+}
+.agregar-editaPerfil:active{
+    background-color: var(--primary-color);
+}
+
+
+
+/* Estilos para pantallas grandes (escritorio) */
+@media (min-width: 1024px) {
+    main{
+        display: flex;
+        flex-direction: row; 
+    }
+
+    .menu-perfil {
+        position: fixed; /* Fija el menú en la parte superior */
+        width: 10%;
+        height: calc(100vh - 60px); /* Altura completa, menos el header */
+        
+        left:0;
+    }
+   
+    .profile-config {
+        
+        
+        margin-left: 16%; /* Espacio suficiente para el menú lateral */
+        margin-right: 4rem;
+        width: 75%; /* Que se adapte mejor al tamaño de la pantalla */
+        padding-left: 4rem;
+    }
+
+
+    
+
+    .profile-config form {
+        
+        
+        width: 100%; /* Asegúrate de que ocupe todo el ancho disponible */
+        padding: 0 0 0 4rem ; /* Añade padding si quieres dar espacio interno */
+        margin: 0; /* Ajusta márgenes si es necesario */
+    }
+}
+
+/* Estilos para pantallas pequeñas (tabletas y móviles) */
+@media (max-width: 768px) {
+
+    main{
+        display: flex;
+        flex-direction: column; 
+        padding: 0;
+        margin-top: 120px;
+        
+    }
+    
+    .menu-perfil {
+        display: block;
+        order: 1;
+        width: 100%; /* Menú ocupa todo el ancho en móviles */
+        height: 15%;
+        z-index: 2;
+        
+        position: fixed; /* Eliminar la posición fija */
+        margin-top:100px;
+        top: -43px;
+        display: flex; /* Convertir en un menú superior */
+        justify-content: space-around; /* Alinear los enlaces horizontalmente */
+        padding-top: 0; /* Eliminar el espacio superior */
+        background-color: var(--primary-color);
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    .profile-config {
+        order: 2;
+        margin-left: 0; /* Eliminar el margen lateral */
+        margin-right: 0; /* Eliminar el margen lateral */
+        margin-top: 3rem; /* Reducir el margen superior */
+        padding: 1rem; /* Ajustar el padding en pantallas pequeñas */
+        width: 100%; /* Ocupa todo el ancho */
+    }
+
+    .profile-config form {
+        display: block;
+        width: 100%; /* Asegúrate de que ocupe todo el ancho disponible */
+        padding: 0 0 0 1rem; /* Ajustar padding en pantallas pequeñas */
+        margin: 0; /* Ajusta márgenes si es necesario */
+    }
+
+    .profile-photo img {
+        width: 10.25rem; /* Reducir el tamaño de la imagen de perfil */
+        height: 10.25rem;
+    }
+
+    /* Ajustar el tamaño de los botones */
+    #botones-contenedor {
+        flex-direction: column; /* Alinear los botones verticalmente */
+        gap: 1rem; /* Espacio entre botones */
+    }
+
+    /* Cambiar el tamaño del menú */
+    .lista-perfil {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        padding-top: 20px;
+        padding-left: auto;
+        margin-top: 1rem;
+        margin-left: 0px;
+        font-size: 13px;
+    }
+    #previewed{
+        width: 40px;
+        height: 40px;
+    }
+    .lista-perfil li {
+        margin:  0px; /* Margen reducido para enlaces */
+    }
+    .lista-perfil li a{
+        margin:  0px; /* Margen reducido para enlaces */
+    }
+
+    .materials-grid {
+        grid-template-columns: 1fr; /* Ocupa una columna en pantallas pequeñas */
+    }
+   
+    .button-group{
+        
+        padding: 0;
+    }
+
+    
+
+}
+
+
+
+/* Estilos para pantallas muy pequeñas (móviles) */
+@media (max-width: 480px) {
+
+    main{
+        display: flex;
+        flex-direction: column; 
+    }
+
+    .profile-photo img {
+        width: 8.25rem;
+        height: 8.25rem;
+    }
+
+    .menu-perfil {
+
+        order:1;
+        top: -43px;
+    }
+    .lista-perfil li {
+        width: 50%; /* Margen reducido para enlaces */
+        padding: 0%;
+        margin-right: 0%;
+    }
+    .menu-perfil img {
+        
+        width: 3rem;
+        height: 3.5rem;
+    }
+    .profile-config{
+        order:2;
+    }
+    
+    .profile-config form {
+        
+        width: 100%; /* Asegúrate de que ocupe todo el ancho disponible */
+        margin: 0; /* Ajusta márgenes si es necesario */
+    }
+
+    /* Botones más pequeños */
+    #editar-imagen, .save-imagen, #editar-datos, .save {
+        padding: 5px 10px;
+    }
+
+    .button-group{
+        padding: 0;
+    }
+}

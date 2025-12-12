@@ -1,0 +1,149 @@
+
+<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+Perfil
+{% endblock %}
+
+{% block contenidos %}
+<!-- Sub Barra de Navegación -->
+<!-- Sub Barra de Navegación -->
+<div class="subBarraNanvegacion">
+    <div class="filtro-fechas-container">
+        <label for="filtro">Selecciona un filtro:</label>
+        <select id="filtro" name="filtro" onchange="this.form.submit()">
+            <option value="todos">Todos los productos</option>
+            <option value="activos">Productos activos</option>
+            <option value="inactivos">Productos inactivos</option>
+        </select>
+    </div>
+
+    <div class="filtro-fechas-containerr">
+        <label for="filtro-fechas">Filtro por fechas:</label>
+        <select id="filtro-fechas" name="filtro-fechas" onchange="this.form.submit()">
+            <option value="ascendente">Fechas Ascendentes</option>
+            <option value="descendente">Fechas Descendentes</option>
+        </select>
+    </div>
+
+    <div class="eliminar-container">
+        <label for="filtro-fechas">Seleccionar Todo:</label>
+        <label class="checkbox-burbuja">
+            <input type="checkbox" id="seleccionar-todo" onclick="toggleCheckboxes(this)">
+            <span></span>
+        </label>
+        <button id="eliminarSeleccionados">Eliminar <ion-icon name="trash-outline"></ion-icon></button>
+    </div>
+</div>
+
+
+<!-- Contenedor de Productos -->
+<div class="ContenedorProductos">
+    <p class="MensajeNoEncontrado" id="noResultMessage">
+        No tienes productos. Publica aqui para que se muestren.
+        <a href="{% url 'ofertar' %}" class="boton-publicar">
+            Publicar
+        </a>      
+    </p>
+    <p class="MensajeNoEncontrado" id="noActiveMessage">No tienes productos activos.</p>
+    <p class="MensajeNoEncontrado" id="noInactiveMessage">No tienes productos inactivos.</p>
+
+    <div class="product-gridd" id="product-gridd">
+        {% for producto in misProductos %}
+        <div class="tarjeta-productoo" data-subcategoria-id="{{ producto.subcategoria.id }}">
+            <div class="seleccion-productoo">
+                <label class="checkbox-burbuja">
+                    <input type="checkbox" class="checkbox-productoo" data-id="{{ producto.id }}">
+                    <span></span>
+                </label>
+            </div>
+
+            <a href="{% url 'detalle_producto' producto.id %}">
+                <!-- Carrusel de imágenes del producto -->
+            <div id="carousel-{{ producto.id }}" class="carousel slide" data-bs-ride="carousel">
+                
+                
+                <!-- Indicadores del carrusel -->
+                <div class="carousel-indicators">
+                    {% for imagen in producto.imagenes.all %}
+                    <button type="button" data-bs-target="#carousel-{{ producto.id }}" 
+                            data-bs-slide-to="{{ forloop.counter0 }}" 
+                            class="{% if forloop.first %}active{% endif %}" 
+                            aria-current="{% if forloop.first %}true{% endif %}" 
+                            aria-label="Imagen {{ forloop.counter }}">
+                    </button>
+                    {% endfor %}
+                </div>
+
+                <!-- Contenedor de imágenes -->
+                <div class="carousel-inner">
+                    {% for imagen in producto.imagenes.all %}
+                    <div class="carousel-item {% if forloop.first %}active{% endif %}">
+                        <img src="{{ imagen.ruta.url }}" 
+                             class="d-block w-100 product-image zoom-effect" 
+                             alt="{{ producto.nombre }}">
+                    </div>
+                    {% endfor %}
+                </div>
+
+                <!-- Controles del carrusel -->
+                <button class="carousel-control-prev" type="button" data-bs-target="#carousel-{{ producto.id }}" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Anterior</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carousel-{{ producto.id }}" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Siguiente</span>
+                </button>
+            </div>
+                
+            </a>
+
+            <a class="nombre-productoo" href="{% url 'detalle_producto' producto.id %}">
+            </a>
+            <h3>{{ producto.nombre }}</h3>
+            <h4 class="subcategoria-productoo">{{ producto.subcategoria.nombre }}</h4>
+            <div class="ContenedorDescripcion">
+                <p class="descripcion-productoo">{{ producto.descripcion }}</p>
+            </div>
+            <span class="precio-productoo">{{ producto.precio }} Bs</span>
+
+            <span class="boton-estado {% if producto.estado_producto %}activo{% else %}inactivo{% endif %}">
+                {% if producto.estado_producto %}
+                    Activo
+                {% else %}
+                    Inactivo
+                {% endif %}
+            </span>
+            <div class="fecha-publicacion"> 
+                <p class="fecha-publicacionn">
+                    Publicado el: {{ producto.fecha_creacion|date:"d/m/Y H:i" }}
+                </p>
+            </div>
+            <a href="{% url 'detalle_producto' producto.id %}" id="editar-producto2" class="boton-editar">Editar Producto</a>
+        </div>
+        {% empty %}
+        <div class="sin-productos">
+            <p>No hay productos disponibles en este momento.</p>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+<!-- Formulario oculto para eliminar productos -->
+<form id="form-eliminar-productos" method="POST" action="{% url 'eliminar_productos' %}" style="display:none;">
+    {% csrf_token %}
+    <input type="hidden" name="product_ids" id="product-ids-input">
+</form>
+
+{% include 'barraPerfil.html' %}
+{% endblock %}
+
+<!--{% block materiales %}
+    {% include 'materiales.html' %}
+{% endblock %}-->
+{% block extra_js %}
+    <script src="{% static 'perfil.js' %}"></script>
+{% endblock %}

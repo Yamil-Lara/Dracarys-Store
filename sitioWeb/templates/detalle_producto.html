@@ -1,0 +1,173 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+Detalle del producto
+{% endblock %}
+
+{% block contenidos %}
+    <!-- Detalle del producto con opciones para editar y eliminar -->
+    <div id="detalle-producto-container">
+        <h2>Detalle del Producto</h2>
+        <form method="POST" enctype="multipart/form-data" id="producto-formulario">
+            {% csrf_token %}
+
+            <div class="form-groupp">
+                <label for="nombre-producto">Nombre del Producto <span class="text-rojo">*</span></label>
+                <input class="form-controll" type="text" maxlength="20" id="nombre-producto" name="nombre" value="{{ producto.nombre }}" required disabled 
+                pattern="^(?!.*([a-zA-Z])\1{3})(?=(.*[a-zA-Z]){3,})(?=.*[0-9]?)[a-zA-Z0-9\s]*$"
+                title="Debes incluir al menos 3 letras y un máximo de 6 números (opcional)." 
+                onkeypress="return /^[a-zA-Z0-9\s]*$/.test(event.key)" 
+                oninput="this.value = this.value.replace(/[^a-zA-Z0-9\s]/g, '');
+                        const numberCount = (this.value.match(/[0-9]/g) || []).length;
+                        if (numberCount > 10) {
+                            // Encuentra el índice del decimo número....
+                            const seventhNumberIndex = this.value.indexOf('11', 10);
+                            // bloquea los numeros si hay mas de 10
+                            this.value = this.value.slice(0, seventhNumberIndex);
+                        }" />
+                <div class="invalid-feedback">
+                    El nombre del producto debe tener minimo 3 letras sin repetir continuamente y un maximo de 20 caracteres.
+                </div>
+            </div>
+            
+            <div class="form-groupp">
+                <label for="descripcion-producto">Descripción <span class="text-rojo">*</span></label>
+                <textarea class="form-controll" id="descripcion-producto" name="descripcion" required disabled placeholder="Añade una descripción..."
+                pattern="^(?!.*([a-zA-Z])\1{4})(?=.*[a-zA-Z].{14,}).*$"
+                onkeypress="return /^[a-zA-Z0-9\s/:?&.=]/i.test(event.key)"
+                rows="2" minlength="15" maxlength="250">{{ producto.descripcion }}</textarea>
+                <div class="invalid-feedback">
+                    La descripción debe tener entre 15 y 200 caracteres.
+                </div>
+            </div>
+            
+            <div class="form-groupp">
+                <label for="precio-producto">Precio <span class="text-rojo">*</span></label>
+                <input class="form-controll" type="number" step="0.01" id="precio-producto" name="precio" value="{{ producto.precio|floatformat:0 }}" 
+                       required disabled min="1" placeholder="Precio Total (Bs)" 
+                       onkeypress="return (event.charCode >= 48 && event.charCode <= 57)"
+                       oninput="this.value = this.value.slice(0, 6)">
+                <div class="invalid-feedback">
+                    Colocale un precio a tu producto, mayor a 0
+                </div>
+            </div>
+
+            <label for="categoria-producto">Categoría:</label>
+            <select id="categoria-producto" name="categoria" disabled>
+                {% for categoria in categorias %}
+                    <option value="{{ categoria.id }}" {% if producto.subcategoria.categoria.id == categoria.id %}selected{% endif %}>
+                        {{ categoria.nombre }}
+                    </option>
+                {% endfor %}
+            </select>
+
+            <label for="subcategoria-producto">Subcategoría:</label>
+            <select id="subcategoria-producto" name="subcategoria" disabled>
+                {% for subcategoria in subcategorias %}
+                    {% if subcategoria.categoria.id == producto.subcategoria.categoria.id %}
+                        <option value="{{ subcategoria.id }}" {% if producto.subcategoria.id == subcategoria.id %}selected{% endif %}>
+                            {{ subcategoria.nombre }}
+                        </option>
+                    {% endif %}
+                {% endfor %}
+            </select>
+
+            <label for="departamento-producto">Departamento:</label>
+            <select id="departamento-producto" name="departamento" disabled>
+                {% for departamento in departamentos %}
+                    <option value="{{ departamento.id }}" {% if producto.provincia.departamento.id == departamento.id %}selected{% endif %}>
+                        {{ departamento.nombre }}
+                    </option>
+                {% endfor %}
+            </select>
+
+            <label for="provincia-producto">Provincia:</label>
+            <select id="provincia-producto" name="provincia" disabled>
+                {% for provincia in provincias %}
+                    {% if provincia.departamento.id == producto.provincia.departamento.id %}
+                        <option value="{{ provincia.id }}" {% if producto.provincia.id == provincia.id %}selected{% endif %}>
+                            {{ provincia.nombre }}
+                        </option>
+                    {% endif %}
+                {% endfor %}
+            </select>
+
+            <div class="form-groupp">
+                <label for="direccion-producto">Dirección</label>
+                <input class="form-controll" type="text" required id="direccion-producto" name="direccion" 
+                    value="{{ producto.direccion }}" disabled placeholder="Ingresa la dirección"
+                    maxlength="100"
+                    pattern="^(?!.*([a-zA-Z])\1{3})(?=.*[a-zA-Z].{14,}).*$"
+                    title="Debe incluir al menos 15 letras y un máximo de 15 dígitos seguidos (se permiten más números si hay un símbolo válido después de 15 dígitos)."
+                    onkeypress="return /^[a-zA-Z0-9\s/:?&.=]/i.test(event.key)"
+                    
+                    oninput="this.value = this.value.replace(/[^a-zA-Z0-9\s/:?&.=]/g, ''); 
+                                const AnumberCount = (this.value.match(/[0-9]/g) || []).length; 
+                                this.value = this.value.replace(/(?:[0-9]*?)([0-9]{15})[0-9]*/, '$1'); 
+                                if (AnumberCount > 20) { 
+                                    this.value = this.value.replace(/(\d{20})(.*)/, '$1'); 
+                                }" />
+                    <div class="invalid-feedback">
+                        Completa este campo porfavor, minimo 15 letras y no puede haber 3 letras iguales repetidas continuamente.
+                    </div>   
+            </div>            
+
+
+            <label for="estado-producto">Estado del Producto:</label>
+            <select id="estado-producto" name="estado" disabled>
+                {% for estado in estados %}
+                    <option value="{{ estado.id }}" {% if producto.estado.id == estado.id %}selected{% endif %}>
+                        {{ estado.estado }}
+                    </option>
+                {% endfor %}
+            </select>
+
+            <label for="estado-producto-activo">¿Producto Activo?</label>
+            <input type="checkbox" id="estado-producto-activo" title="Si lo desactivas tu publicación no se mostrara" name="estado_producto" {% if producto.estado_producto %}checked{% endif %} disabled>
+            
+            <div id="imagenes-producto">
+                <div id="imagenes-titulo">
+                    <h3>Imágenes</h3>
+                    <label id="nuevas-imagenes1" class="nuevas-imagenes1" for="nuevas-imagenes" hidden title="Selecciona imágenes para añadir"> + </label>
+                    <input type="file" id="nuevas-imagenes" name="nuevas_imagenes" multiple disabled>
+                    <button type="submit" id="borrar-imagenes1" class="borrar-imagenes1" for="borrar-imagenes" hidden title="Selecciona imágenes para eliminar"><i class="fa-solid fa-trash"></i></button>
+                </div>
+                <!-- Label que mostrará los nombres de las imágenes seleccionadas -->
+                <label id="mensaje-imagenes-seleccionadas" style="display: none; font-size: 14px; color: #333;"></label>
+                <ul>
+                    {% for imagen in producto.imagenes.all %}
+                        <li>
+                            <img src="{{ imagen.ruta.url }}" alt="Imagen de {{ producto.nombre }}" width="100">
+                            <input type="checkbox" name="imagenes_a_eliminar" value="{{ imagen.id }}" disabled hidden> 
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+            
+
+            
+            <div id="botones-editar" class="botones-editar">
+                <button type="submit" id="boton-guardar-producto" style="display: none;">Guardar Cambios</button>
+                <button type="reset"  id="boton-cancelar-producto"   >Cancelar</button>
+            </div>
+            
+        </form>
+
+        <!-- Contenedor de los botones de acción -->
+        <div id="producto-formulario-buttons">
+            <button id="editar-producto">Editar Producto</button>
+        
+            <button id="eliminar-producto" data-url="{% url 'eliminar_producto' producto.id %}">Eliminar Producto</button>
+        </div>
+    </div>
+
+    {% include 'barraPerfil.html' %}
+{% endblock %}
+
+{% block extra_js %}
+    <script src="{% static 'perfil.js' %}"></script>
+    <script src= "{% static 'detalle_producto.js' %}"></script>
+    
+{% endblock %}
+

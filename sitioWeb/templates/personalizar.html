@@ -1,0 +1,47 @@
+{% load static %}
+<div id="ventana-Estilos" class="ventana-estilos-modal">
+    <div class="ventana-estilos-content">
+        <span class="ventana-estilos-close">&times;</span>
+        <h2>Elige un Tema</h2>        
+
+        <!-- Usar un elemento HTML para almacenar el valor -->
+        <div id="user-id" data-user-id="{{ user_id }}"></div>
+
+        <div class="ventana-estilos-image-container">
+            <div class="image-item">
+                <img src="{% static 'temas/1.png' %}" alt="Imagen 1" class="selectable-image">
+                <p class="image-caption">Deep Forest</p>
+            </div>
+            <div class="image-item">
+                <img src="{% static 'temas/2.png' %}" alt="Imagen 2" class="selectable-image">
+                <p class="image-caption">Light</p>
+            </div>
+            <div class="image-item">
+                <img src="{% static 'temas/3.png' %}" alt="Imagen 3" class="selectable-image">
+                <p class="image-caption">Dark</p>
+            </div>
+            <div class="image-item">
+                <img src="{% static 'temas/4.png' %}" alt="Imagen 4" class="selectable-image">
+                <p class="image-caption">Calm Waters</p>
+            </div>
+            <div class="image-item">
+                <img src="{% static 'temas/5.png' %}" alt="Imagen 5" class="selectable-image">
+                <p class="image-caption">Soft Horizons</p>
+            </div>
+            <div class="image-item">
+                <img src="{% static 'temas/6.png' %}" alt="Imagen 6" class="selectable-image">
+                <p class="image-caption">Blush Glow</p>
+            </div>
+            <div class="image-item">
+                <img src="{% static 'temas/7.png' %}" alt="Imagen 7" class="selectable-image">
+                <p class="image-caption">Minted Bliss</p>
+            </div>
+            <div class="image-item">
+                <img src="{% static 'temas/8.png' %}" alt="Imagen 8" class="selectable-image">
+                <p class="image-caption">Sandy Shores</p>
+            </div>
+            
+        </div>
+        <p id="selected-image-info">Ninguna imagen seleccionada</p>
+    </div>
+</div>

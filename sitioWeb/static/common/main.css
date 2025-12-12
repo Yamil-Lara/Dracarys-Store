@@ -1,0 +1,551 @@
+/* Colores base */
+:root {
+    --primary-color: #02735E;
+    --secondary-color: #014040;
+    --accent-color: #F27405; /* Naranja vibrante */
+    --accent-hover: #e15b00; /* Naranja oscuro */
+    --text-color: #333;
+    --background-color: #f4f4f4;
+    --white: #ffffff;
+
+}
+
+/* Fondo general y tipografía */
+body {
+    background-color: var(--primary-color);
+    font-family: 'Roboto', sans-serif;
+    color: var(--secondary-color);
+}
+
+/* Encabezado */
+.navbar {
+    background-color: #02735E;;
+    color: #ffffff;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.navbar a.nav-link {
+    color: #ffffff;
+    box-shadow: 1px 1px 3px 1px var(--secondary-color);
+    border-radius: 5px;
+    margin: 3px;
+    transition: color 0.3s ease, transform 0.2s;
+}
+
+.navbar a.nav-link:hover {
+    color: var(--accent-color); /* Naranja en hover */
+    transform: scale(1.05); /* Efecto de agrandamiento leve */
+}
+
+/* Menú lateral */
+.main-sidebar {
+    background-color: var(--secondary-color); /* Verde oscuro */
+    color: #ffffff;
+    padding-top: 10px;
+}
+
+.main-sidebar .nav-item .nav-link {
+    color: #ffffff;
+    padding: 12px;
+    border-radius: 4px;
+    margin: 5px 0;
+    transition: background-color 0.3s ease, transform 0.2s;
+}
+
+.main-sidebar .nav-item .nav-link:hover {
+    background-color: var(--primary-color); /* Verde medio en hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    transform: translateX(4px); /* Efecto de movimiento hacia la derecha */
+}
+
+/* Títulos de secciones */
+.content-wrapper .content-header h1 {
+    color: var(--primary-color);
+    font-weight: 700;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+/* Botones */
+.btn-primary {
+    background-color: var(--primary-color);
+    border: none;
+    color: #ffffff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s, box-shadow 0.3s, transform 0.2s;
+}
+
+.btn-primary:hover {
+    background-color: var(--accent-color); /* Naranja en hover */
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3);
+    transform: translateY(-2px); /* Efecto de elevación */
+}
+
+/* Tablas */
+.table {
+    background-color: #ffffff;
+    border: 1px solid #b2dfdb; /* Verde claro */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+/*Es el color de la tabla de USUARIOSen el ADMIN*/
+.table th {
+    background-color:transparent;
+    /*box-shadow: 1px 1px 5px 1px  #02735E;*/
+    
+    color: #ffffff;
+}
+.table tbody tr:hover {
+    background-color:#e4f3f3; 
+}
+.field-nombre a{
+    color: red;
+}
+
+
+
+/* Campos de formulario */
+input[type="text"],
+input[type="email"],
+input[type="password"],
+select {
+    border: 1px solid var(--primary-color);
+    border-radius: 4px;
+    padding: 8px;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus,
+select:focus {
+    border-color: var(--accent-color);
+    box-shadow: 0 0 8px rgba(242, 116, 5, 0.3); /* Sombra naranja en foco */
+}
+
+/* Mensajes */
+.alert {
+    border-radius: 5px;
+    padding: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.alert-success {
+    background-color: #e0f2f1;
+    color: var(--secondary-color);
+    border: 1px solid #a5d6a7;
+}
+
+.alert-danger {
+    background-color: #ffccbc;
+    color: #c62828;
+    border: 1px solid #ff8a65;
+}
+
+/* Elementos destacados */
+.highlight {
+    color: var(--accent-color); /* Elementos en naranja */
+    font-weight: bold;
+}
+.form-group{
+    border-radius: 20px;
+}
+
+
+
+
+
+
+/* Estilos generales para la página */
+body.jazzmin-login-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #02735E,#014040);
+    font-family: 'Arial', sans-serif;
+}
+
+/* Caja del formulario de inicio de sesión */
+.login-box {
+    width: 500px;
+    height: 500px;
+    margin: auto;
+    padding: 2em;
+    border-radius: 10px;
+    background-color: #ffffff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Logo de la aplicación */
+img {
+    text-align: center;
+    font-size: 1em;
+    font-weight: bold;
+    color: #02735E;
+    margin-bottom: 10px;
+    margin-top: 5px;
+    width: 100px;
+
+}
+
+/* Mensaje de bienvenida */
+.login-box-msg {
+    text-align: center;
+    font-size: 1.25em;
+    color: #333333;
+    margin-bottom: 5px;
+    
+}
+.card-body{
+    box-shadow: 1px 2px 5px 1px #014040;
+    border-radius: 5px;
+}
+/* Estilos para los inputs */
+.input-group .form-control {
+    border: 1px solid  #bdeeee;;
+    border-radius: 5px;
+    padding: 0.75em;
+    font-size: 1em;
+    color: #333;
+    transition: border-color 0.3s ease;
+    
+}
+
+/* Iconos dentro de los inputs */
+.input-group-text {
+    background-color: #f3f3f3;
+    border: 1px solid #ddd;
+    color: 014040;
+    border-radius: 0 5px 5px 0;
+}
+
+/* Efecto hover para los inputs */
+.input-group .form-control:focus {
+    border-color: black;
+    box-shadow: 0 0 5px #014040;
+}
+
+/* Botón de inicio de sesión */
+.btn-primary {
+    background: linear-gradient(45deg, #014040, #02735E);
+    border: none;
+    color: white;
+    font-weight: bold;
+    padding: 0.75em;
+    border-radius: 5px;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+/* Hover y efecto de click en el botón */
+.btn-primary:hover {
+    background-color: #F27405;
+    transform: scale(1.05);
+}
+
+.btn-primary:active {
+    transform: scale(1);
+}
+
+/* Pequeño efecto de sombra */
+.btn-primary {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+/* Ocultar los botones de Guardar y continuar editando y el botón Histórico */
+
+#jazzy-actions .btn-info,
+#jazzy-actions .btn-secondary {
+    display: none; /* Oculta los botones */
+}
+
+/* Estilos para el botón Guardar */
+#jazzy-actions .btn-success{
+    background-color: var(--primary-color);
+}
+/* Estilo al pasar el ratón (hover) */
+#jazzy-actions .btn-success:hover {
+    background-color: var(--secondary-color); /* Naranja brillante en hover */
+    transform: scale(1.05); /* Efecto de agrandamiento */
+}
+/* Estilos para el botón Guardar */
+#jazzy-actions .btn-cancel{
+    color: white;
+    background-color: var(--accent-color);
+}
+/* Estilo al pasar el ratón (hover) */
+#jazzy-actions .btn-cancel:hover {
+    background-color: var(--accent-hover); /* Naranja brillante en hover */
+    transform: scale(1.05); /* Efecto de agrandamiento */
+}
+
+
+/*Modificando color de guardar en el ADMIN*/
+.btn.btn-success.form-control{
+    background-color: var(--primary-color);
+    border: #02735E;
+}
+.btn.btn-success.form-control:hover{
+    background-color: var(--secondary-color);
+    border: var(--secondary-color);
+}
+.btn.btn-success.form-control:active{
+    background-color: var(--accent-color);
+    border: var(--accent-color);
+}
+/*Boton que aparece en el panel de control el MODIFICAR*/
+.btn.btn-xs.btn-info.changelink{
+    background-color: var(--primary-color);
+}
+.btn.btn-xs.btn-info.changelink:hover{
+    background-color: var(--secondary-color);
+}
+/*Cambiando el color de Desplegable de cuenta CERRAR SESION*/
+.dropdown-menu.dropdown-menu-lg.dropdown-menu-left.show{
+    background-color: var(--primary-color);
+    box-shadow: 2px 2px 5px 1px var(--secondary-color);
+    color: white;
+}
+/*Color de letra del menu desplegagle de cuenta ADMIN*/
+.dropdown-header{
+    color: white;
+}
+
+
+/*Nombre de la tienda en el login*/
+.login-box-msg{
+    padding: 2px;
+    color: var(--secondary-color);
+}
+/*Mensaje de error en el login*/
+.callout.callout-danger{
+    padding: 1px;
+}
+
+/*Color de DracaryStore Antes Amarillo*/
+.brand-link.navbar-warning.active{
+    background-color: var(--primary-color);
+}
+.brand-text.font-weight-light{
+    background-color: var(--primary-color);
+}
+
+.main-footer .float-right.d-none.d-sm-inline {
+    display: none;
+    color: var(--background-color);
+    user-select: none;
+}
+#recent-actions-module a[href*="/admin/sitioWeb/usuario/"] {
+    color: var(--primary-color);
+    /*font-size: 1.5rem;*/
+}
+.brand-link.navbar-warning{
+    background-color: var(--primary-color);
+}
+
+
+
+
+a[href="/admin/password_change/"] {
+    display: none;
+}
+
+
+
+
+
+
+
+
+
+
+
+nav#jazzy-navbar .nav-item.dropdown > a.nav-link > i.far.fa-user {
+    display: none;
+}
+
+nav#jazzy-navbar .nav-item.dropdown > a.nav-link::before {
+    content: "";
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    background-image: url('/static/cerrar-sesion.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    margin-right: 5px;
+}
+
+
+/* Selecciona específicamente el ícono en el botón de cerrar sesión */
+nav#jazzy-navbar form#logout-form .dropdown-item > i.fas.fa-users {
+    display: none; /* Oculta el ícono actual */
+}
+
+/* Añade un nuevo ícono personalizado antes del texto del botón */
+nav#jazzy-navbar form#logout-form .dropdown-item::before {
+    content: ""; /* Necesario para añadir un ícono */
+    display: inline-block;
+    width: 20px; /* Ajusta el tamaño del ícono */
+    height: 20px;
+    background-image: url('/static/opcion-de-cerrar-sesionBlanco.png'); /* Ruta a tu ícono personalizado */
+    background-size: contain; /* Asegura que el ícono se ajuste bien */
+    background-repeat: no-repeat; /* Evita repeticiones */
+    margin-right: 5px; /* Espacio entre el ícono y el texto */
+}
+
+
+
+nav#jazzy-navbar form#logout-form .dropdown-item:hover::before {
+    background-image: url('/static/opcionCerrar.png'); /* Ruta a la imagen de hover */
+}
+
+/*color de cerrar secion a blanco*/
+.dropdown-item{
+    color: #bdeeee;
+}
+
+
+
+
+img {
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 5px;
+    max-width: 100%;
+    max-height: 100px;
+}
+
+
+/*
+th.field-nombre a::after {
+    content: "Detalles";
+    color: inherit;
+    font-weight: normal;
+}
+
+th.field-nombre a {
+    visibility: hidden;
+    position: relative;
+}
+
+th.field-nombre a::after {
+    visibility: visible;
+    position: absolute;
+    left: 0;
+}*/
+.alert.alert-danger {
+    position: relative;
+    visibility: hidden; /* Oculta el mensaje original */
+  }
+  
+  .alert.alert-danger::after {
+    content: "Por favor, corrige el error a continuación."; /* Mensaje en español */
+    visibility: visible; /* Asegura que el nuevo contenido sea visible */
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%; /* Ocupa el ancho completo del contenedor */
+    background-color: #ffccbc; /* Color de fondo original */
+    color: #c62828; /* Color del texto original */
+    padding: 10px; /* Espaciado interno */
+    border: 1px solid #ff8a65; /* Borde original */
+    border-radius: 4px; /* Mantiene esquinas redondeadas */
+    box-sizing: border-box; /* Asegura que el estilo no afecte el diseño */
+  }
+/* Estilo específico para la tabla del administrador de logos */
+#result_list th.field-nombre a[href*="/admin/sitioWeb/configuracionlogo/"]::after {
+    content: "Detalles";
+    display: inline-block;
+    padding: 5px 10px;
+    background-color: var(--primary-color); /* Color del botón */
+    color: white;
+    font-size: 15px;
+    border-radius: 5px;
+    text-align: center;
+    text-decoration: none;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+#result_list th.field-nombre a[href*="/admin/sitioWeb/configuracionlogo/"] {
+    visibility: hidden;
+    position: relative;
+}
+
+#result_list th.field-nombre a[href*="/admin/sitioWeb/configuracionlogo/"]::after {
+    visibility: visible;
+    position: absolute;
+    left: 0;
+}
+
+#result_list th.field-nombre a[href*="/admin/sitioWeb/configuracionlogo/"]:hover::after {
+    background-color: var(--accent-hover); /* Color al pasar el cursor */
+}
+
+h3.timeline-header.no-border a[href="/admin/sitioWeb/configuracionlogo/1/change/"] {
+    color: var(--primary-color) !important; 
+    text-decoration: none !important; 
+}
+
+h3.timeline-header.no-border a[href="/admin/auth/user/2/change/"] {
+    color: var(--primary-color) !important;
+    text-decoration: none !important;
+}
+
+h3.timeline-header.no-border a[href="/admin/sitioWeb/producto/32/change/"] {
+    color: var(--primary-color) !important; 
+    text-decoration: none !important; 
+}
+
+
+
+/*Dando color al boton SUBIR archivo en el admin*/
+/* Oculta el input original, pero sigue siendo funcional */
+#id_form-0-logo {
+    opacity: 0; /* Lo hace invisible */
+    position: absolute; /* Lo posiciona fuera de la vista */
+    z-index: -1; /* Lo coloca detrás de otros elementos */
+  }
+  
+  /* Botón personalizado */
+  #customFileButton {
+    display: inline-block;
+    padding: 5px 5px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #ffffff;
+    background: var(--primary-color);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+    transition: background 0.3s, transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Hover efecto */
+  #customFileButton:hover {
+    background: var(--secondary-color);
+    transform: scale(1.02);
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+  }
+  
+  /* Mostrar el nombre del archivo */
+  #fileNameDisplay {
+    margin-top: 10px;
+    font-size: 14px;
+    color: #333;
+    font-style: italic;
+  }
+  
+  /*Dando color al boton SUBIR archivo en DETALLES en el admin*/
+  #id_logo{
+    padding: 5px;
+    background: var(--primary-color);
+    border-radius: 10px;
+    color: var(--background-color);
+  }
+  #id_logo:hover{
+    background-color: var(--secondary-color);
+  }
+/*quitando el boton de cancelar en comision del admin*/
+  form#comisionadmin_form .btn-cancel {
+    display: none;
+  }

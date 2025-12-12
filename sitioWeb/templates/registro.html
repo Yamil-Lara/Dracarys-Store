@@ -1,0 +1,151 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registrate de Usuario</title>
+  <link rel="stylesheet" href="{% static 'styles.css' %}"> <!-- Asegúrate de tener el CSS en la misma carpeta o ajustar la ruta -->
+  <link rel="stylesheet" href="{% static 'registro.css' %}"> <!-- CSS específico para la página de registro -->
+  
+  <link rel="stylesheet" href="{% static 'login.css' %}">
+  <script  type = "module"  src = " https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js " > </script> 
+  <script nomodule  src  = " https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js " > </script>
+  
+</head>
+<body>
+    <!-- se modifico esta parte para q se monstrara el toast -->
+    <div id="toast-container" class="toast-container">
+      {% if messages %}
+          {% for message in messages %}
+              <div class="toast{% if message.tags %} {{ message.tags }}{% endif %}">
+                  {{ message }}
+              </div>
+          {% endfor %}
+      {% endif %}
+    </div>
+    <!-- se modifico esta parte para q se monstrara el toast -->
+
+  <div class="container">
+    <div class="left-section">
+        <a href="{% url 'base' %}">
+            {% if config_logo and config_logo.logo %}
+                <img src="{{ config_logo.logo.url }}" alt="Logo" class="image">
+            {% else %}
+                <!-- Imagen por defecto en caso de que no haya logo en la base de datos -->
+                <img src="{% static 'LogoIS_Oficial.png' %}" alt="Logo" class="image">
+            {% endif %}
+        </a>
+        <div class="texto">
+            <p class="description">
+                Bienvenido a nuestra plataforma de materiales de construcción usados. 
+                Encuentra productos de calidad a precios accesibles.
+            </p>
+        </div>
+    </div>
+    
+
+    <div class="right-section">
+      <div class="login-box">
+          <h2 class="TituloRegistro">Registro Usuario</h2>
+          <form id="registrationForm" method="POST">
+              {% csrf_token %}
+  
+              <!-- Nombre de Usuario -->
+              <div class="input-box">
+                  <input 
+                      class="input" 
+                      type="text" 
+                      name="username" 
+                      placeholder="Nombre de Usuario (*)" 
+                      required 
+                      pattern="[A-Za-z]{3,}" 
+                      oninput="validateUsername(this)"
+                      title="El nombre de usuario debe contener al menos 3 caracteres y menos de 20"
+                      maxlength="20"
+                  >
+                  <label></label>
+                  <ion-icon name="person-outline"></ion-icon>
+              </div>
+  
+              <!-- Correo Electrónico -->
+              <div class="input-box">
+                  <input 
+                      class="input" 
+                      type="email" 
+                      name="email" 
+                      placeholder="Correo Electrónico (*)" 
+                      title="El correo debe contener @gmail.com"
+                      required
+                      oninput="validateEmail(this)"
+                  >
+                  <label></label>
+                  <ion-icon name="mail-unread-outline"></ion-icon>
+              </div>
+  
+              <!-- Número de Teléfono -->
+              <div class="input-box">
+                  <input 
+                      id="telefono" 
+                      class="input" 
+                      type="tel" 
+                      name="NumTelefono" 
+                      minlength="8" 
+                      maxlength="8" 
+                      placeholder="Numero Celular"
+                      title="El numero de telefono debe ser de 8 digitos"
+                      oninput="validatePhone(this)"
+                      pattern="[0-9]*" 
+                      onkeypress="return event.charCode >= 48 && event.charCode <= 57"
+                  >
+                  <label></label>
+                  <ion-icon name="call-outline"></ion-icon>
+              </div>
+  
+              <!-- Contraseña -->
+              <div class="input-box">
+                  <input 
+                      class="input" 
+                      type="password" 
+                      name="password" 
+                      placeholder="Contraseña (*)" 
+                      required 
+                      minlength="5" 
+                      title="La contraseña debe tener al menos 5 caracteres"
+                      oninput="validatePassword(this)"
+                  >
+                  <label></label>
+                  <ion-icon name="key-outline"></ion-icon>
+              </div>
+  
+              <!-- Confirmar Contraseña -->
+              <div class="input-box">
+                  <input 
+                      class="input" 
+                      type="password" 
+                      name="confirmPassword" 
+                      placeholder="Confirmar Contraseña (*)" 
+                      required 
+                      oninput="validateConfirmPassword(this, document.querySelector('input[name=\'password\']'))"
+                      title="Confirma la contraseña"
+                  >
+                  <label></label>
+                  <ion-icon name="bag-check-outline"></ion-icon>
+              </div>
+  
+              <div class="login-link">
+                  <label>(*) Campos obligatorios</label>
+                  <br>
+                  <a href="{% url 'base' %}?login=1" class="nav-link" id="loginBtn"> ¿Ya tienes una cuenta? Inicia sesión</a>
+                  <button class="Registrarse" type="submit">Registrarse</button>
+                  <button class="CancelarRegistro"> <a href="{% url 'base' %}" >Cancelar</a> </button>
+              </div>
+          </form>
+      </div>
+  </div>
+  
+  
+  <script src="{% static 'registro.js' %}"></script>
+  <script src="{% static 'login.js' %}"></script>
+</body>
+</html>

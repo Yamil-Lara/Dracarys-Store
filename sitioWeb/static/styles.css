@@ -1,0 +1,66 @@
+:root {
+    --primary-color: #02735E;
+    --secondary-color: #014040;
+    --tertiary-color:#F27405;
+    --text-color: #333;
+    --background-color: #f4f4f4;
+    --white: #ffffff;
+    
+    --cancelarColor:#6c757d;
+    --cancelarHover:#495057;
+    --cancelarActive:#5a6268;
+
+    --eliminarColor:#dc3545;
+    --eliminarHover:#b51e2a;
+    --eliminarActive:#c82333;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;  /* Evita cualquier margen predeterminado del navegador */
+    padding: 0; /* asdasd*/
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--background-color);
+
+    padding-bottom: 3em;
+    position: relative;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+
+main {
+    display: flex;
+    padding: 2rem;
+    gap: 2rem;
+    margin-top: 80px;  /* Ajusta según la altura de la barra */
+}
+
+
+footer {
+    background-color: var(--primary-color);
+    color: white;
+    text-align: center;
+    padding: 10px;
+
+    position: absolute; /* No se fija, solo se queda al final del flujo del documento */
+    bottom: 0;
+    width: 100%;
+    z-index: 2;
+
+}
+
+@media (max-width: 750px) {
+    main {
+        padding-top: 100px;
+        flex-direction: column;
+        margin-top: 120px; 
+    }
+}

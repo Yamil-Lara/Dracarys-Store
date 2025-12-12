@@ -1,0 +1,180 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Ofertar Material{% endblock %}
+{% block asides %}
+    {% include 'cuenta.html' %}
+{% endblock %}
+{% block contenidos %}
+{% include 'barraPerfil.html' %}
+<!--class="profile-config"-->
+<div class="container2" >
+    <h1>Ofertar Material</h1>
+    <form class="row g-3 needs-validation" novalidate id="ofertaForm" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+
+        <!-- Campo para el título del producto -->
+        <div class="form-group">
+            <label for="titulo">Título del Producto <span class="text-rojo">*</span></label>
+            <input class="form-control"  maxlength="20" type="text" name="titulo" id="titulo" placeholder="Ingresa el título del producto" required autocomplete="off"
+                pattern="^(?!.*([a-zA-Z])\1{3})(?=(.*[a-zA-Z]){3,})(?=.*[0-9]?)[a-zA-Z0-9\s]*$"
+                title="Debes incluir al menos 3 letras y un máximo de 6 números (opcional)." 
+                onkeypress="return /^[a-zA-Z0-9\s]*$/.test(event.key)" 
+                oninput="this.value = this.value.replace(/[^a-zA-Z0-9\s]/g, '');
+                        const numberCount = (this.value.match(/[0-9]/g) || []).length;
+                        if (numberCount > 10) {
+                            // Encuentra el índice del decimo número....
+                            const seventhNumberIndex = this.value.indexOf('11', 10);
+                            // bloquea los numeros si hay mas de 10
+                            this.value = this.value.slice(0, seventhNumberIndex);
+                        }" />
+            <div class="invalid-feedback">
+                Completa este campo por favor, mínimo 3 letras, no puede haber mas de 3 letras iguales repetidas continuamente.
+            </div>
+        </div>
+        
+        <div class="form-group inline">
+            <label for="departamento">Departamento <span class="text-rojo">*</span></label>
+            <select class="form-select" id="departamento" name="departamento" required>
+                <option value="" disabled selected>Seleccionar Departamento</option>
+                <option value="Chuquisaca" data-provincias='["Azurduy", "Belisario Boeto", "Hernando Siles", "Jaime Zudáñez", "Luis Calvo", "Nor Cinti", "Oropeza", "Sud Cinti", "Tomina", "Yamparáez"]'>Chuquisaca</option>
+                <option value="La Paz" data-provincias='["Abel Iturralde", "Aroma", "Bautista Saavedra", "Caranavi", "Eliodoro Camacho", "Franz Tamayo", "Gualberto Villarroel", "Ingavi", "Inquisivi", "José Manuel Pando", "Larecaja", "Loayza", "Los Andes", "Manco Kapac", "Muñecas", "Nor Yungas", "Omasuyos", "Pacajes", "Pedro Domingo Murillo", "Sud Yungas"]'>La Paz</option>
+                <option value="Cochabamba" data-provincias='["Arani", "Arque", "Ayopaya", "Bolívar", "Campero", "Capinota", "Carrasco", "Cercado", "Chapare", "Esteban Arce", "Germán Jordán", "Mizque", "Punata", "Quillacollo", "Tapacarí", "Tiraque"]'>Cochabamba</option>
+                <option value="Santa Cruz" data-provincias='["Andrés Ibáñez", "Ángel Sandóval", "Chiquitos", "Cordillera", "Florida", "Germán Busch", "Guarayos", "Ichilo", "Manuel María Caballero", "Ñuflo de Chávez", "Obispo Santistevan", "Sara", "Tomás Frías", "Vallegrande", "Velasco"]'>Santa Cruz</option>
+                <option value="Oruro" data-provincias='["Atahuallpa", "Carangas", "Cercado", "Dalence", "Eduardo Avaroa", "Ladislao Cabrera", "Litoral", "Mejillones", "Nor Carangas", "Pantaleón Dalence", "Poopó", "Sabaya", "Sajama", "Sebastián Pagador", "Sud Carangas", "Tomas Barrón"]'>Oruro</option>
+                <option value="Potosí" data-provincias='["Alonso de Ibáñez", "Antonio Quijarro", "Bernardino Bilbao", "Charcas", "Chayanta", "Cornelio Saavedra", "Daniel Campos", "Enrique Baldivieso", "José María Linares", "Modesto Omiste", "Nor Chichas", "Nor Lípez", "Rafael Bustillo", "Sud Chichas", "Sud Lípez", "Tomás Frías"]'>Potosí</option>
+                <option value="Tarija" data-provincias='["Aniceto Arce", "Avilés", "Burdet OConnor", "Cercado", "Gran Chaco", "José María Avilés"]'>Tarija</option>
+                <option value="Beni" data-provincias='["Cercado", "Antonio Vaca Díez", "General José Ballivián", "Iténez", "Mamoré", "Marbán", "Moxos", "Yacuma"]'>Beni</option>
+                <option value="Pando" data-provincias='["Abuná", "Federico Román", "Madre de Dios", "Manuripi", "Nicolás Suárez"]'>Pando</option>
+            </select>
+            
+            <label for="provincia">Provincia <span class="text-rojo">*</span></label>
+            <select class="form-select" id="provincia" name="provincia" required>
+                <option value="" disabled selected>Seleccionar Provincia</option>
+            </select>
+            
+        </div>
+
+        <div class="form-group">
+            <label for="urlMapa">Dirección <span class="text-rojo">*</span></label>
+            <input class="form-control" type="text" name="urlMapa" id="urlMapa" placeholder="Añade tu direccion" required autocomplete="off"
+            maxlength="100"
+            pattern="^(?!.*([a-zA-Z])\1{3})(?=.*[a-zA-Z].{14,}).*$"
+            title="Debe incluir al menos 15 letras y un máximo de 15 dígitos seguidos (se permiten más números si hay un símbolo válido después de 15 dígitos)."
+            onkeypress="return /^[a-zA-Z0-9\s/:?&.=]/i.test(event.key)"
+            
+            oninput="this.value = this.value.replace(/[^a-zA-Z0-9\s/:?&.=]/g, ''); 
+                        const AnumberCount = (this.value.match(/[0-9]/g) || []).length; 
+                        this.value = this.value.replace(/(?:[0-9]*?)([0-9]{15})[0-9]*/, '$1'); 
+                        if (AnumberCount > 20) { 
+                            this.value = this.value.replace(/(\d{20})(.*)/, '$1'); 
+                        }" />
+            <div class="invalid-feedback">
+                Completa este campo porfavor, minimo 15 letras y no puede haber 3 letras iguales repetidas continuamente.
+            </div>            
+        </div>
+
+        <div class="form-group">
+            <label for="material">Tipo de Material <span class="text-rojo">*</span></label>
+            <select class="form-select" id="material" name="material" required>
+                <option value="" disabled selected>Seleccionar Categoría</option>
+                <optgroup label="Acero">
+                    <option value="Laminas">Laminas</option>
+                    <option value="Varrilla">Varrilla</option>
+                    <option value="Alambrón">Alambrón</option>
+                    <option value="Perfiles">Perfiles</option>
+                </optgroup>
+                <optgroup label="Tejas y Cubiertas">
+                    <option value="Tejas">Tejas</option>
+                    <option value="Canaletas">Canaletas</option>
+                </optgroup>
+                <optgroup label="Cemento y Complemento">
+                    <option value="Cemento">Cemento</option>
+                    <option value="Yeso">Yeso</option>
+                    <option value="Cal">Cal</option>
+                    <option value="Mortero">Mortero</option>
+                </optgroup>
+                <optgroup label="Ladrillos y Bloques">
+                    <option value="Ladrillos">Ladrillos</option>
+                    <option value="Bloques de Concreto">Bloques de Concreto</option>
+                </optgroup>
+                <optgroup label="Arenas">
+                    <option value="Arena de Rio">Arena de Rio</option>
+                    <option value="Arena Gruesa">Arena Gruesa</option>
+                    <option value="Arena Fina">Arena Fina</option>
+                </optgroup>
+            </select>
+            <div class="invalid-feedback">
+                Selecciona un categoria
+            </div>
+        </div>
+
+        <div class="form-group inline">
+            <div>
+                <label for="precio">Precio <span class="text-rojo">*</span></label>
+                <input class="form-control" type="number" name="precio" id="precio" placeholder="Precio Total (Bs)" required 
+                    autocomplete="off" min="1" 
+                    oninput="this.value = this.value.slice(0, 6); this.value = !!this.value && Math.abs(this.value) >= 1 ? this.value : null;" />
+                <div class="invalid-feedback">
+                    Colocale un precio a tu producto, mayor a 0
+                </div>
+            </div>
+            
+        </div>
+
+        <div class="custom-file-upload">
+            <label for="archivo">Subir Archivo(s) <span class="text-rojo">*</span></label>
+            <input type="file" class="form-control" aria-label="file example" id="archivo" name="archivo" required accept=".png, .jpeg" multiple>
+            <label for="archivo" class="custom-file-button">Seleccionar archivo(s)</label>
+            <span id="file-name">No se ha seleccionado archivo</span>
+        </div>
+        
+        
+
+
+        <div id="preview-container" class="preview-container">
+            <!-- Aquí se mostrarán las miniaturas -->
+        </div>
+
+        <div>
+            <label for="estado">Estado <span class="text-rojo">*</span></label>
+            <select class="form-select" id="estado" name="estado" required>
+                <option value="" disabled selected>Seleccionar Estado</option>
+                <option value="nuevo">Nuevo</option>
+                <option value="seminuevo">Seminuevo</option>
+                <option value="usado">Usado</option>
+                <option value="con_detalles">Con detalles</option>
+            </select>
+            <div class="invalid-feedback">
+                Selecciona un estado
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="descripcion">Descripción <span class="text-rojo">*</span></label>
+            <textarea class="form-control" id="descripcion" name="descripcion" required placeholder="Añade una pequeña descripción..." 
+            pattern="^(?!.*([a-zA-Z])\1{4})(?=.*[a-zA-Z].{14,}).*$"
+            onkeypress="return /^[a-zA-Z0-9\s/:?&.=]/i.test(event.key)"
+            rows="2" minlength="15" maxlength="250"
+            ></textarea>
+            <div class="invalid-feedback">
+                Añade una pequeña descripcion, minimo de 15 caracteres
+            </div>
+        </div>
+
+        <div class="checkbox-container">
+            <input type="checkbox" class="form-check-input" id="validationFormCheck1" required>
+            <label class="form-check-label" for="validationFormCheck1">Acepto las Condiciones del servicio y la Política de Privacidad</label>
+        </div>
+
+        <div class="button-group-ofertar">
+            <button type="submit" class="btn btn-primary" id="button-ofertar" >Ofertar</button>
+            <button type="button" class="btn btn-secondary" id="button-cancelar">Cancelar</button>
+        </div>
+    </form>
+</div>
+
+{% endblock %}
+{% block extra_js %}
+    <script src="{% static 'perfil.js' %}"></script>
+    <script src="{% static 'ofertar.js' %}"></script>
+{% endblock %}

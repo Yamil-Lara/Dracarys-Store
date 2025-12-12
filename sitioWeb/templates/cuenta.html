@@ -1,0 +1,90 @@
+<div class="profile-config" >
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+
+        <div class="profile-photo">
+            <img id="preview" src="{% if user.foto %}{{ user.foto.url }}{% else %}https://via.placeholder.com/150{% endif %}" alt="Foto de perfil">
+            <input type="file" name="imagenPerfil" id="imagenPerfil" style="display: none;">
+            <div id="botones-contenedor">
+                <button class = editaFoto type="button" id="editar-imagen">Editar foto</button>
+                <button type="submit" class="save-imagen">Guardar foto</button>
+            </div>
+        </div>
+
+        <div class="datos-principal">
+            <label for="name">Nombre De Usuario:</label>
+            <div style="display: flex; align-items: center;">
+                <input type="text" id="name" name="nombre" value="{{ user.nombre }}" readonly>
+                <button class = agregar-editaPerfil type="button" id="editar-nombre">Editar</button>
+            </div>
+
+            <!-- Modal oculto Nombre -->
+            <div id="modal-editar-nombre" class="modal">
+                <div class="modal-content">
+                    <h2>Editar Nombre</h2>
+                    <input type="text" id="input-editar-nombre" name="nuevo_nombre" value="{{ user.nombre }}" maxlength="20" >
+                    <div class="modal-buttons">
+                        <button type="button" id="cancelar-nombre">Salir</button>
+                        <button type="button" id="guardar-nombre">Guardar</button>
+                    </div>
+                </div>
+            </div>
+
+            <label for="email">Correo Electrónico:</label>
+            <div style="display: flex; align-items: center;">
+                <input type="text" id="email" name="correo" value="{{ user.correo }}" readonly>
+                <button class = agregar-editaPerfil type="button" id="editar-correo">Editar</button>
+            </div>
+
+            <!-- modal oculto correo -->
+            <div id="modal-editar-correo" class="modal">
+                <div class="modal-content">
+                    <h2>Editar Correo</h2>
+                    <input type="email" id="input-editar-correo" name="nuevo_correo" value="{{ user.correo }}" maxlength="30">
+                    <div class="modal-buttons">
+                        <button type="button" id="cancelar-correo">Salir</button>
+                        <button type="button" id="guardar-correo">Guardar</button>
+                    </div>
+                </div>
+            </div>
+
+            <label for="celular">Número Celular:</label>
+            <div style="display: flex; align-items: center;">
+                <input type="text" id="celular" name="celular" value="{{ user.celular }}" readonly>
+                <button class = agregar-editaPerfil type="button" id="editar-celular">Editar</button>
+            </div>
+
+            <!-- Modal oculto para celular -->
+            <div id="modal-editar-celular" class="modal">
+                <div class="modal-content">
+                    <h2>Editar Celular</h2>
+                    <input type="number" id="input-editar-celular" name="nuevo_celular" value="{{ user.celular }}">
+                    <div class="modal-buttons">
+                        <button type="button" id="cancelar-celular">Salir</button>
+                        <button type="button" id="guardar-celular">Guardar</button>
+                    </div>
+                </div>
+            </div>
+
+            <div id="modal-final" class="modal">
+                <div class="modal-content">
+                    <h3>El cambio se realizó con éxito</h3>
+                    <button type="submit" class="save">Aceptar</button>
+                </div>
+            </div>
+        </div>
+        <!--
+        <div class="button-group">
+            <a href="{% url 'perfil' %}" class="cancelar">Cancelar</a>
+            <button type="submit" class="save">Guardar cambios</button>
+        </div>
+        -->
+        
+    </form>
+</div>
+
+
+<!--
+    <a href="{% url 'logout' %}" class="logout">Cerrar sesión</a>
+    <a href="{% url 'ofertar' %}" class="ofertarM"> Ofertar Material</a>
+-->

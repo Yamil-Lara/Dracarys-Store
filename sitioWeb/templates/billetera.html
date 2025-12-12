@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}billetera{% endblock %}
+{% block asides %}
+    {% include 'cuenta.html' %}
+{% endblock %}
+{% block contenidos %}
+{% include 'barraPerfil.html' %}
+<div class="containerPadre" >
+    <div class="containerr">
+        <h1>Billetera de {{ user.nombre }}</h1>
+        <div class="saldo-container">
+               <img id="chanchito-img" src="{% static 'saldoRE.png' %}" alt="Chanchito" width="40" height="40">
+               <h2>Saldo: <span id="saldo" class="oculto">{{ user.billetera }} Bs.</span></h2>
+               <button id="toggle-saldo" onclick="toggleSaldo()">👁️</button>
+        </div>
+        <!-- Mensajes de notificación -->
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+            {% endfor %}
+        {% endif %}
+        <div class="acciones">
+            <div class="accion">
+                <img src="{% static 'depositar.png' %}" alt="Depositar"  onclick="activarInput('deposito-input')" >
+                <button class="accion-btn" onclick="activarInput('deposito-input')">Depositar</button>
+            </div>
+                    
+            <div class="accion">
+                <img src="{% static 'retirarRE.png' %}" alt="Retirar"  onclick="activarInput('retiro-input')">
+                <button class="accion-btn" onclick="activarInput('retiro-input')">Retirar</button>
+            </div>
+        </div>
+    
+         <!-- Recargar saldo -->
+         <form method="POST" id="deposito-input" class="input-form" style="display: none;" >
+             {% csrf_token %}
+             <input type="hidden" name="accion" value="recargar">
+             <label for="monto_deposito">Monto a depositar:</label>
+             <input type="number" name="monto_recarga" id="monto_deposito"  step="0.01" min ="0" required>
+             <button type="submit">Confirmar</button>
+         </form>
+         <form method="POST" id="retiro-input" class="input-form" style="display: none;" >
+            {% csrf_token %}
+            <!-- Acción para retirar -->
+            <input type="hidden" name="accion" value="retirar">
+            <label for="monto_retiro">Monto a retirar:</label>
+            <input type="number" name="monto_retiro" id="monto_retiro" step="0.01" min = "0" required>
+            <button type="submit">Confirmar</button>
+         </form>
+    </div>
+</div>
+
+{% endblock %}
+{% block extra_js %}
+    <script src="{% static 'perfil.js' %}"></script>
+{% endblock %}

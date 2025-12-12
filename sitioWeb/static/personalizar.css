@@ -1,0 +1,241 @@
+/* Estilos para ventana-Estilos */
+.ventana-estilos-modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    align-items: center;
+    justify-content: center;
+}
+
+.ventana-estilos-content {
+    background-color: var(--primary-color);
+    padding: 20px;
+    border-radius: 8px;
+    width: 90%;
+    max-width: 600px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    box-sizing: border-box;
+}
+
+.ventana-estilos-image-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+}
+
+.ventana-estilos-image-container img {
+    width: 100%;
+    max-width: 120px;
+    height: auto;
+    border-radius: 8px;
+}
+
+/* Ajuste para pantallas pequeñas */
+@media (max-width: 600px) {
+    .ventana-estilos-content {
+        width: 95%;
+        padding: 15px;
+    }
+
+    .ventana-estilos-image-container img {
+        max-width: 80px;
+    }
+}
+
+.ventana-estilos-close {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 30px;
+    cursor: pointer;
+    color: var(--tertiary-color);
+}
+
+
+
+
+
+
+
+
+/* SIN FUNCIONAR PORQUE NO HAY BOTON NI VENTANA >>>>>>>>>>>>>>>>>>>>>> */
+
+/* PARA CAMBAIR LOGO */
+
+
+/* Estilo para la imagen seleccionada */
+.selectable-image.selected {
+    border: 3px solid red; /* Un borde verde para resaltar la selección */
+    transform: scale(1.1); /* Aumentar ligeramente el tamaño */
+    transition: transform 0.2s, border 0.2s;
+}
+
+#selected-image-info {
+    margin-top: 20px;
+    font-size: 16px;
+    color: white;
+    display: none;
+}
+
+
+
+
+
+
+
+
+
+.ventana-estilos-image-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 10px; /* Espacio entre los elementos */
+}
+
+.image-item {
+    text-align: center;
+    width: 120px; /* Ajusta el ancho para hacer los elementos más compactos */
+}
+
+.selectable-image {
+    width: 100%; /* Ocupa el ancho completo del contenedor */
+    height: auto;
+    border-radius: 5px; /* Opcional: bordes redondeados */
+}
+
+.image-caption {
+    margin-top: 4px;
+    font-size: 12px;
+    color: var(--white);
+}
+
+
+
+
+
+
+/* Estilos para la ventana flotante Cambiar Logo */
+.modal-cambiar-logo {
+    display: none;           /* Oculta la ventana por defecto */
+    position: fixed;         /* Fija la ventana en la pantalla */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Fondo oscuro semitransparente */
+    z-index: 1000;           /* Asegura que la ventana esté por encima de otros elementos */
+}
+
+.modal-cambiar-logo .modal-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: var(--primary-color);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    width: 80%;
+    max-width: 400px;
+}
+
+.modal-cambiar-logo .close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 30px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* Hacer que el input ocupe todo el ancho disponible */
+input[type="file"] {
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+}
+
+/* Contenedor de los botones */
+.button-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+/* Estilos de los botones */
+button {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    background-color: var(--tertiary-color); /* Color de fondo predeterminado */
+    color: white;
+}
+
+button:hover {
+    background-color: #014040; /* Hover con un tono más oscuro */
+}
+
+button:active {
+    background-color: #005B47; /* Estado activo */
+}
+
+/* Estilos específicos para el botón Cancelar */
+#cancelar-logo {
+    background-color: #6c757d;
+}
+
+#cancelar-logo:hover {
+    background-color: #495057;
+}
+
+#cancelar-logo:active {
+    background-color: #5a6268;
+}
+
+/* Estilos específicos para el botón Guardar */
+#guardar-logo {
+    background-color: #28a745;
+}
+
+#guardar-logo:hover {
+    background-color: #218838;
+}
+
+#guardar-logo:active {
+    background-color: #1e7e34;
+}
+
+
+#image-preview-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 100%;
+    max-height: 300px; /* Ajusta el alto máximo según necesites */
+    overflow: hidden;
+    margin: 0 auto;
+}
+
+#image-preview {
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    border-radius: 8px; /* Opcional: redondear bordes */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Opcional: sombra */
+    display: none; /* Solo se muestra cuando hay una imagen cargada */
+}
+
+
+/* <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< HASTA AKI */

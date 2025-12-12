@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}transaccion{% endblock %}
+{% block asides %}
+    {% include 'cuenta.html' %}
+{% endblock %}
+{% block contenidos %}
+    {% include 'barraPerfil.html' %}
+    <div class="container-transaccion">
+        <h1>Resumen de Compra</h1>
+        <h1>Usuario: "{{ user.nombre }}"</h1>
+
+        <!-- Mensajes de notificación -->
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+            {% endfor %}
+        {% endif %}
+        
+        <!-- Lista de productos del carrito -->
+        <div class="cart-items">
+            {% for item in carritos %}
+            <div class="cart-ite">
+                <span>{{ item.producto.nombre }} - {{ item.producto.precio }} bs</span>
+            </div>
+            {% endfor %}
+        </div>
+        
+        <!-- Mostrar el total y la comision -->
+        <div class="cart-total">
+            <p>Total: <strong>{{ total }}</strong> bs</p>
+            <p>Comision (10%): <strong>{{ comision }}</strong> bs</p>
+            <p><strong>Total después del comision: {{ total_comision }}</strong> bs</p>
+        </div>
+
+        <!-- Botones de Confirmar y Cancelar -->
+        <div class="buttons">
+            <form method="POST">
+                {% csrf_token %}
+                <button type="submit" name="confirmar_compra" class="btn-confirmar">Confirmar Compra</button>
+            </form>
+            <form method="POST" action="cancelar_compra">
+                {% csrf_token %}
+                <button type="button" class="btn-cancelar" onclick="history.back()">Cancelar Compra</button>
+            </form>        
+        </div>
+    </div>
+    <div class="saldo-container-transaccion">
+        <img id="chanchito-img" src="{% static 'saldoRE.png' %}" alt="Chanchito" width="40" height="40">
+        <h2>Saldo: <span id="saldo" class="oculto-transaccion">{{ user.billetera }} Bs.</span></h2>
+        <button class="ojito-transaccion"id="toggle-saldo" onclick="toggleSaldo()">👁️</button>
+    </div>
+{% endblock %}

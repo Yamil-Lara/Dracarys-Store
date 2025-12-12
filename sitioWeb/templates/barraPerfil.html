@@ -1,0 +1,93 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'personalizar.css' %}">
+<div class="menu-perfil">
+    <img id="previewed" src="{% if user.foto %}{{ user.foto.url }}{% else %}https://via.placeholder.com/150{% endif %}" alt="Foto de Perfil">
+    <ul class="lista-perfil">
+        <li><a href="{% url 'perfil' %}">Perfil</a></li>
+        <li><a href="{% url 'ofertar' %}" class="ofertarMa"> Ofertar Material</a></li>
+        <li><a href="{% url 'billetera' %}">Billetera</a></li>
+        <li><a href="{% url 'mis_materiales' %}">Mis Materiales</a></li>
+        <li><a href="#" id="openVentanaEstilos">Estilos</a></li>
+
+        <!-- <li><a href="#" id="cambiar-logo">Cambiar Logo</a></li> -->
+
+        <li><a href="{% url 'logout' %}" id= "cerrarSesionPerfil" class="logoutS">Cerrar sesión</a></li>
+    </ul>
+</div>
+
+
+<!-- Ventana flotante -->
+<!-- <div id="ventana-Estilos" class="ventana-estilos-modal">
+    <div class="ventana-estilos-content">
+        <span class="ventana-estilos-close">&times;</span>
+        <h2>Elije un Tema</h2>
+        <div class="ventana-estilos-image-container">
+            <div class="image-item">
+                <img src="{% static 'temas/1.png' %}" alt="Imagen 1" class="selectable-image">
+                <p class="image-caption">Deep Forest</p>
+            </div>
+            <div class="image-item">
+                <img src="{% static 'temas/2.png' %}" alt="Imagen 2" class="selectable-image">
+                <p class="image-caption">Light</p>
+            </div>
+            <div class="image-item">
+                <img src="{% static 'temas/3.png' %}" alt="Imagen 3" class="selectable-image">
+                <p class="image-caption">Dark</p>
+            </div>
+            <div class="image-item">
+                <img src="{% static 'temas/4.png' %}" alt="Imagen 4" class="selectable-image">
+                <p class="image-caption">Calm Waters</p>
+            </div>
+            <div class="image-item">
+                <img src="{% static 'temas/5.png' %}" alt="Imagen 5" class="selectable-image">
+                <p class="image-caption">Soft Horizons</p>
+            </div>
+            <div class="image-item">
+                <img src="{% static 'temas/6.png' %}" alt="Imagen 6" class="selectable-image">
+                <p class="image-caption">Blush Glow</p>
+            </div>
+            <div class="image-item">
+                <img src="{% static 'temas/7.png' %}" alt="Imagen 7" class="selectable-image">
+                <p class="image-caption">Minted Bliss</p>
+            </div>
+            <div class="image-item">
+                <img src="{% static 'temas/8.png' %}" alt="Imagen 8" class="selectable-image">
+                <p class="image-caption">Sandy Shores</p>
+            </div>
+            
+        </div>
+        <p id="selected-image-info">Ninguna imagen seleccionada</p>
+    </div>
+</div> -->
+
+{% block perso %}
+        <!--inicio de sesion -->
+        {% include 'personalizar.html' %}
+    {% endblock %}
+
+
+
+<!-- HALILITA EL CODIGO PARA Q FUNCIONE y Y EL BOTON -->
+
+<!-- Ventana flotante Cambiar Logo -->
+
+
+<!-- <div id="Cambiar-Logo" class="modal-cambiar-logo">
+    <div class="modal-content">
+        <h2>Cambiar Logo</h2>
+        <input type="file" id="logo-input" accept="image/*">
+        <div id="image-preview-container">
+            <img id="image-preview" src="" alt="Vista previa" style="display:none; max-width: 100%; height: auto; margin-top: 10px;">
+        </div>
+        <p id="error-message" style="color: white; text-shadow: 4px 4px 8px rgb(0, 0, 0); display: none;">Archivo no válido. Por favor, sube una imagen.</p>
+        <div class="button-container">
+            <button id="subir-imagen">Subir Imagen</button>
+            <button id="guardar-logo">Guardar</button>
+            <button id="cancelar-logo">Cancelar</button>
+        </div>
+    </div>
+</div> -->
+
+
+
+<script src="{% static 'personalizar.js' %}"></script>

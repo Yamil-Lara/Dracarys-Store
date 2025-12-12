@@ -1,0 +1,67 @@
+{% load static %}
+<nav class="navbar">
+    <div class="logo">
+        <a href="{% url 'base' %}">
+            {% if config_logo and config_logo.logo %}
+                <img src="{{ config_logo.logo.url }}" alt="Logo" class="logo-img">
+            {% else %}
+                <!-- Imagen por defecto en caso de que no haya logo en la base de datos -->
+                <img src="{% static 'LogoIS_Oficial.png' %}" alt="Logo" class="logo-img">
+            {% endif %}
+        </a>
+    </div>
+    <div class="search-bar">        
+        {% if not is_profile_page %}
+            <input class="inputBuscar" id="inputBuscar" type="text" placeholder="Buscar productos...">
+            <button id="buttonbuscar" onclick="buscarProducto()"><i class="fas fa-search"></i></button>
+        {% endif %}
+    </div>
+
+    <div class="nav-links" id="navLinks">
+        <a href="{% url 'base' %}" class="nav-link">Inicio</a> <!-- Asegúrate de tener la URL configurada -->
+         <!-- Botón del carrito -->
+         <div class="dropdown">
+            <button class="dropbtn">Carrito <span id="carrito-contador">{{ cantidad_carrito }}</span></button> <!-- El número inicial es solo para mostrar el formato -->
+            {% if request.session.user_id %}
+                <div class="cart-popup" id="cart-popup">
+                    <h3>Carrito de Compras</h3>
+                    {% if carritos %}
+                        {% for item in carritos %}
+                        <div class="cart-item" id="cartItems" data-precio="{{ item.producto.precio }}">
+                            <span>{{ item.producto.nombre }} - {{ item.producto.precio|floatformat:2 }} bs </span>
+                            <button class="remove-from-cart" data-id="{{ item.producto.id }}">Eliminar</button>
+                        </div>
+                        {% endfor %}
+                        <p class="cart-total">Total: <strong id="cart-total">0.00</strong> bs</p>
+                    {% else %}
+                        <p>No hay productos en el carrito.</p>
+                    {% endif %}
+                    <!-- Botón "Comprar" -->
+                    <a href="{% url 'transaccion' %}" class="btn-buy">Comprar</a>
+                </div>
+            {% endif %}
+        </div>        
+
+                <!--<a href=# class="nav-link">Iniciar Sesion</a>-->
+                {% if request.session.user_id %}
+                <a href="{% url 'perfil' %}" class="nav-link">
+                    {% if user.foto %}
+                        <img src="{{ user.foto.url }}" alt="Foto de perfil" class="profile-img">
+                    {% else %}
+                        <img src="{% static 'default-profile.png' %}" alt="Foto de perfil" class="profile-img">
+                    {% endif %}
+                    {{ user.nombre }}
+                </a>
+                {% else %}
+                    <a href="#" class="nav-link" id="loginBtn">
+                        <img src="{% static 'default-profile.png' %}" alt="Perfil" class="profile-img">
+                        Iniciar Sesión
+                    </a>
+                {% endif %}
+    </div>
+    <div class="hamburger" id="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+</nav>
