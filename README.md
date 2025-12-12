@@ -1,2 +1,1 @@
-# Dracarys-Store
-
+este es el readme
