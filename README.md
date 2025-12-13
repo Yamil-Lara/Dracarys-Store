@@ -1,8 +1,3 @@
-Admin Acces: 
-Nombre => admin
-Contraseña => 123
-
-
 Empezando a CORRER:
 # 1. Crear entorno virtual
 python -m venv venv
@@ -24,3 +19,12 @@ python manage.py runserver
 
 # Acceder a la página
 http://127.0.0.1:8000/
+
+
+
+# ACCESO A ADMIN LOCAL
+LINK: http://127.0.0.1:8000/admin
+
+# CREDENCIALES ADMIN
+Nombre => admin
+Contraseña => 123

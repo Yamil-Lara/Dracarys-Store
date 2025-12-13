@@ -27,7 +27,7 @@ DEBUG = True
 
 #ALLOWED_HOSTS = []
 #ALLOWED_HOSTS = [ 'DevsUpWEB.pythonanywhere.com', 'localhost']
-ALLOWED_HOSTS = ['Testpythonwebapps.pythonanywhere.com']
+ALLOWED_HOSTS = ['Testpythonwebapps.pythonanywhere.com', 'localhost', '127.0.0.1']
 
 # media para que encuentre las imagenes que el usuario suba (donde guarda las imagenes)
 MEDIA_URL = '/media/'
