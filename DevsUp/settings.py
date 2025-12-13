@@ -25,17 +25,19 @@ SECRET_KEY = 'django-insecure-5s%ua8)e+b1a88(20+61bbj@_qsi^4_(-3c(r+x-#p=4-bjxv@
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
-
+#ALLOWED_HOSTS = []
 #ALLOWED_HOSTS = [ 'DevsUpWEB.pythonanywhere.com', 'localhost']
+ALLOWED_HOSTS = ['Testpythonwebapps.pythonanywhere.com']
+
 # media para que encuentre las imagenes que el usuario suba (donde guarda las imagenes)
 MEDIA_URL = '/media/'
+
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
 # cerrar sesion
 LOGOUT_REDIRECT_URL = '/'  # Cambia '/' por la URL de tu página de inicio si es necesario
 
 # Application definition
-
 INSTALLED_APPS = [
     'jazzmin',#Para jazzmin estilos del admin
     'django.contrib.admin',
@@ -173,7 +175,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
 STATIC_URL = 'static/'
-#STATIC_ROOT=os.path.join(BASE_DIR, 'static')
+#STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
 #borrar la carpeta static
 #python manage.py collectstatic
 
