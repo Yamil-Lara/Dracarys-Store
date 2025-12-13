@@ -3,7 +3,7 @@
         {% csrf_token %}
 
         <div class="profile-photo">
-            <img id="preview" src="{% if user.foto %}{{ user.foto.url }}{% else %}https://via.placeholder.com/150{% endif %}" alt="Foto de perfil">
+            <img id="preview" src="{% if user.foto %}{{ user.foto.url }}{% else %}/static/default-profile.png{% endif %}" alt="Foto de perfil">
             <input type="file" name="imagenPerfil" id="imagenPerfil" style="display: none;">
             <div id="botones-contenedor">
                 <button class = editaFoto type="button" id="editar-imagen">Editar foto</button>

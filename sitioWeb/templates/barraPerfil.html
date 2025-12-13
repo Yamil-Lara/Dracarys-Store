@@ -1,7 +1,7 @@
 {% load static %}
 <link rel="stylesheet" href="{% static 'personalizar.css' %}">
 <div class="menu-perfil">
-    <img id="previewed" src="{% if user.foto %}{{ user.foto.url }}{% else %}https://via.placeholder.com/150{% endif %}" alt="Foto de Perfil">
+    <img id="previewed" src="{% if user.foto %}{{ user.foto.url }}{% else %}/static/default-profile.png{% endif %}" alt="Foto de Perfil">
     <ul class="lista-perfil">
         <li><a href="{% url 'perfil' %}">Perfil</a></li>
         <li><a href="{% url 'ofertar' %}" class="ofertarMa"> Ofertar Material</a></li>
