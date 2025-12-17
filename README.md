@@ -197,7 +197,7 @@ git push origin feature/NuevaFuncionalidad
 ---
 
 ### 📄 Licencia
-Este proyecto se distribuye bajo la Licencia MIT.
+Este proyecto se distribuye bajo la Licencia de la [Universidad Mayor de San Simón](https://www.umss.edu.bo/tramites).
 
 ---
 
