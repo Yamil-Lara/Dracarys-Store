@@ -202,5 +202,5 @@ Este proyecto se distribuye bajo la Licencia de la [Universidad Mayor de San Sim
 ---
 
 ### 📞 Contacto
-Desarrollado por [ [Yamil Lara](https://yamil-lara.github.io) / Equipo DevsUp]
+Desarrollado por [ [Yamil Lara](https://yamil-lara.github.io) / _Equipo DevsUp_ / [UMSS](https://https://www.umss.edu.bo/) ]
 ### 📧 Email: Yamillara7@gmail.com
