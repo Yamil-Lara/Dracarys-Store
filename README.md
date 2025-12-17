@@ -188,11 +188,11 @@ git checkout -b feature/NuevaFuncionalidad
 ```bash
 git commit -m "Añadir nueva funcionalidad"
 ```
-5. Push:
+4. Push:
 ```bash
 git push origin feature/NuevaFuncionalidad
 ```
-7. Abrir Pull Request
+5. Abrir Pull Request
 
 ---
 
