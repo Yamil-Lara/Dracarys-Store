@@ -2,8 +2,8 @@
 
 ![Django](https://img.shields.io/badge/Django-4.x-green)
 ![Python](https://img.shields.io/badge/Python-3.10%2B-blue)
-![License](https://img.shields.io/badge/License-MIT-yellow)
-![Status](https://img.shields.io/badge/Status-En%20Desarrollo-orange)
+![License](https://img.shields.io/badge/License-UMSS_BO-yellow)
+![Status](https://img.shields.io/badge/Status-Finalizado-green)
 
 **Dracarys Store** es una plataforma web de **comercio electrónico (Marketplace)** desarrollada en **Django**, diseñada para permitir la compra y venta de productos entre usuarios, integrando una **billetera virtual**, personalización de interfaz y un **panel administrativo moderno**.
 
@@ -202,5 +202,7 @@ Este proyecto se distribuye bajo la Licencia MIT.
 ---
 
 ### 📞 Contacto
-Desarrollado por [[Yamil Lara](https://yamil-lara.github.io/) / Equipo DevsUp]
+Desarrollado por [[Yamil Lara](https://yamil-lara.github.io) / Equipo DevsUp]
 ### 📧 Email: Yamillara7@gmail.com
+
+---
